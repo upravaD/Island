@@ -1,39 +1,24 @@
 package Main;
-
 import LiveStock.Plants;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 public class Initialize implements Runnable {
 
-    Random random = new Random();
-    int x = random.nextInt(3);
-    int y = random.nextInt(3);
+    public String name = String.valueOf(Initialize.class);
 
     public Initialize() {
-        Plants plants = new Plants();
-        plants.run();
-        Board.boardValue.add(plants.getWeight());
+        System.out.println(name);
     }
 
     @Override
     public void run() {
-        Board.island[0] = Board.boardValue.toArray();
-        System.out.println(Arrays.deepToString(Board.island));
+        Plants plants = new Plants();
+        plants.start();
+        try {
+            Thread.sleep(3000);
+            plants.interrupt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-//    @Override
-//    public void run() {
-//        int value = (int) (Math.random() * 1000);
-//        Board.boardValue.add(value);
-//        Board.island[x] = Board.boardValue.toArray();
-//        System.out.println(Arrays.deepToString(Board.island));
-//        //Board.boardValue.set(x, value/2);
-//        //Board.island[x] = null;
-//        //value += (int) (Math.random() * 1000);
-//        x += 1;
-//
-//    }
 
 }
