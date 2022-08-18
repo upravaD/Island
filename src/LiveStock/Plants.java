@@ -3,7 +3,8 @@ package LiveStock;
 import Main.Board;
 
 import java.util.Arrays;
-import java.util.ListIterator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,21 +12,21 @@ import java.util.concurrent.TimeUnit;
 
 public class Plants extends Thread {
 
-    public String name = String.valueOf(Plants.class);
-    private int weight;
+    public String name = Plants.class.getSimpleName();
+    public static Map<String, Double> plantsMapValue = new HashMap<>();
+    private Double weight;
     private final int maxPlantsOnBoard;
 
     public Plants() {
-        this.weight = 1;
+        this.weight = 1.0;
         this.maxPlantsOnBoard = 200;
         System.out.println(name);
     }
 
-    public int getWeight() {
+    public Double getWeight() {
         return weight;
     }
-
-    public void setWeight(int weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -34,51 +35,47 @@ public class Plants extends Thread {
     }
 
     private void bornPlants() {
+        Random random = new Random();
+        plantsMapValue.put(name, getWeight());
+        Board.boardListValue.add(0, Plants.plantsMapValue);
+        boolean cancel = false;
 
-        //Популяция растений в ячейке
-        Board.boardValue.add(0, getWeight());
-        while (!interrupted()) {
-            ListIterator<Object> iterator = Board.boardValue.listIterator();
-            while (iterator.hasNext()) {
-                int next = (int) iterator.next();
-                iterator.set(this.weight += 2);
-                if (next >= maxPlantsOnBoard) {
-                    setWeight(1);
-                    iterator.set(this.weight);
-                }
+        while (!cancel) {
+
+            //Популяция растений в ячейке
+            if (plantsMapValue.get(name) >= maxPlantsOnBoard) {
+                plantsMapValue.replace(name, getWeight(), 1.0);
+                setWeight(1.0);
             }
+            plantsMapValue.replace(name, getWeight(), weight += random.nextInt(5));
 
-            //Добавление на карту
-            Random random = new Random();
+            //Добавление List на карту
+            System.out.println("Картина на " + Board.day + " день:");
             int x = random.nextInt(3);
             int y = random.nextInt(3);
-            Board.island2[x][y] = Arrays.toString(Board.boardValue.toArray());
+            //Board.island[x][y] = Arrays.toString(plantsMapValue.entrySet().toArray());
+            Board.island[x][y] = Arrays.toString(Board.boardListValue.toArray());
+            Board.printBoard();
 
-            //вывод на экран
-            for (int i = 0; i < Board.island2[x].length; i++) {
-                for (int j = 0; j < Board.island2[y].length; j++) {
-                    System.out.print("  " + Board.island2[i][j] + "  ");
-                }
-                System.out.println();
-            }
-            System.out.println();
+            //Период обновления
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                cancel = true;
             }
         }
     }
 
     @Override
-    public void start() {
-
+    public void run() {
         ScheduledExecutorService executorServicePlants = Executors.newScheduledThreadPool(4);
         executorServicePlants.scheduleAtFixedRate(this::bornPlants, 0, 1000, TimeUnit.MILLISECONDS);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            executorServicePlants.shutdown();
         }
 
     }
