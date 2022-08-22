@@ -1,6 +1,6 @@
 package Main;
 
-import LiveStock.Plants;
+import LiveStock.Animal.Animal;
 
 import java.util.*;
 
@@ -9,6 +9,8 @@ public class Board {
     public static int day = 1;
     public static String[][] island = new String[3][3];
     public static List<Map<String, Double>> boardListValue = new ArrayList<>();
+    public static List<Object> boardList = new ArrayList<>();
+    public static Set<Object> boardSet = new HashSet<>();
 
     public static void printBoard() {
         //вывод карты на экран
@@ -21,16 +23,4 @@ public class Board {
         System.out.println();
         Board.day++;
     }
-
-//        while (!interrupted()) {
-//            ListIterator<Object> iterator = Board.boardValue.listIterator();
-//            while (iterator.hasNext()) {
-//                int next = (int) iterator.next();
-//                iterator.set(this.weight += 2);
-//                if (next >= maxPlantsOnBoard) {
-//                    setWeight(1);
-//                    iterator.set(this.weight);
-//                }
-//            }
-//        }
 }

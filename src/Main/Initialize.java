@@ -1,6 +1,5 @@
 package Main;
-import LiveStock.Herbivores.Rabbit;
-import LiveStock.Plants;
+import LiveStock.PlantsThread;
 
 public class Initialize extends Thread {
 
@@ -12,7 +11,7 @@ public class Initialize extends Thread {
 
     @Override
     public void run() {
-        Plants plants = new Plants();
+        PlantsThread plants = new PlantsThread();
         plants.start();
         try {
             Thread.sleep(1000);

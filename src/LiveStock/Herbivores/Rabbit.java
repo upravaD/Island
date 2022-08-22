@@ -1,7 +1,5 @@
 package LiveStock.Herbivores;
 
-import LiveStock.Animal;
-import LiveStock.Plants;
 import Main.Board;
 
 import java.util.HashMap;
@@ -10,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class Rabbit extends Animal {
+public class Rabbit extends Herbivores {
 
     public String simpleName = Rabbit.class.getSimpleName();
     public static Map<String, Double> rabbitMapValue = new HashMap<>();
@@ -21,7 +19,7 @@ public class Rabbit extends Animal {
         super.setMaxValueOnBoard(150);
         super.setSpeed(2);
         super.setFoolSaturation(0.45);
-        System.out.println(simpleName);
+        //System.out.println(simpleName);
     }
 
     public String getSimpleNameName() {
@@ -46,17 +44,5 @@ public class Rabbit extends Animal {
     @Override
     public void toDie() {
 
-    }
-
-    @Override
-    public void run() {
-        ScheduledExecutorService executorServicePlants = Executors.newScheduledThreadPool(4);
-        executorServicePlants.scheduleAtFixedRate(this::bornRabbit, 0, 1000, TimeUnit.MILLISECONDS);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            executorServicePlants.shutdown();
-        }
     }
 }

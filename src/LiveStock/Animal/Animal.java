@@ -1,6 +1,6 @@
-package LiveStock;
+package LiveStock.Animal;
 
-public abstract class Animal extends Thread {
+public abstract class Animal {
 
     private double weight;
     private int maxValueOnBoard;
@@ -40,3 +40,4 @@ public abstract class Animal extends Thread {
         this.foolSaturation = foolSaturation;
     }
 }
+
