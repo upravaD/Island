@@ -1,53 +1,41 @@
 package Main;
 
 import LiveStock.Animal.*;
-import LiveStock.Herbivores.Herbivores;
 import LiveStock.Herbivores.Rabbit;
 import LiveStock.Plants;
-import LiveStock.Predators.Predator;
-import LiveStock.Predators.Wolf;
+import Main.Board.Board;
 
-import java.util.ListIterator;
 import java.util.Random;
 
+import static Main.Board.Board.*;
+
 public class Main {
+
+    Random random = new Random();
+    public static AnimalFactory factory = new AnimalFactory();
+
     public static void main(String[] args) {
-//        Initialize initialize = new Initialize();
-//        initialize.start();
-//        try {
-//            Thread.sleep(3000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//            initialize.interrupt();
-//        }
-        Random random = new Random();
-        AnimalFactory factory = new AnimalFactory();
 
-        Board.boardList.add(0, new Plants());
-        Board.boardList.add(1, factory.createAnimal(8));
-        Board.boardList.add(2, factory.createAnimal(14));
-        System.out.println(Board.boardList.toString() + " " + 1);
+        printBoard();
+        list0000.add(0, new Plants());
+        list0000.add(1, factory.createAnimal(8));
+        list0000.add(2, factory.createAnimal(14));
+        list0001.add(0, new Plants());
+        initBoard();
+        printBoard();
 
-        if (Board.boardList.get(1) instanceof Herbivores) {
-            Board.boardList.set(0, null);
-            System.out.println(Board.boardList.toString() + " " + 2.0);
-        }
-        if (Board.boardList.get(2) instanceof Predator) {
-            int x = random.nextInt(100);
-            if (x <= 60) {
-                Board.boardList.set(1, null);
-            } else {
-                Board.boardList.set(2, null);
+        int x = 3;
+        while (x > 0) {
+            Rabbit.rabbit.eat();
+            Rabbit.rabbit.move();
+            Board.initBoard();
+            printBoard();
+            x--;
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            System.out.println(Board.boardList.toString() + " " + 2.1);
         }
-        System.out.println(Board.boardList.toString() + " " + 3);
-
-//        int x = 10;
-//        while (x > 0) {
-//            Board.boardList.add(factory.createAnimal(random.nextInt(AnimalType.values().length)));
-//            x--;
-//        }
-//        System.out.println(Board.boardList.toString());
     }
 }

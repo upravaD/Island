@@ -9,4 +9,5 @@ public class Plants {
         this.weight = 1.0;
         this.maxPlantsOnBoard = 200;
     }
+
 }

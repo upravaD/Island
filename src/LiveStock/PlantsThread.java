@@ -1,6 +1,6 @@
 package LiveStock;
 
-import Main.Board;
+import Main.Board.Board;
 
 import java.util.Arrays;
 import java.util.HashMap;

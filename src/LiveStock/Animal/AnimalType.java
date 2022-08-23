@@ -1,20 +1,21 @@
 package LiveStock.Animal;
 
 public enum AnimalType {
-    BOAR,
-    BUFFALO,
-    CATERPILLAR,
-    DEER,
-    DUCK,
-    GOAT,
-    HORSE,
-    MOUSE,
-    RABBIT,
-    SHEEP,
-
-    BEAR,
-    BOA,
-    EAGLE,
-    FOX,
-    WOLF;
+    //Травоядные
+    BOAR,        //Кабан
+    BUFFALO,     //Буйвол
+    CATERPILLAR, //Гусеница
+    DEER,        //Олень
+    DUCK,        //Утка
+    GOAT,        //Коза
+    HORSE,       //Лошадь
+    MOUSE,       //Мышь
+    RABBIT,      //Кролик
+    SHEEP,       //Овца
+    //Хищники
+    BEAR,        //Медведь
+    BOA,         //Удав
+    EAGLE,       //Орел
+    FOX,         //Лиса
+    WOLF         //Волк
 }

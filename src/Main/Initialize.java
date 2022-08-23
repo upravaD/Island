@@ -11,23 +11,7 @@ public class Initialize extends Thread {
 
     @Override
     public void run() {
-        PlantsThread plants = new PlantsThread();
-        plants.start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            plants.interrupt();
-        }
 
-//        Rabbit rabbit = new Rabbit();
-//        rabbit.start();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//            rabbit.interrupt();
-//        }
     }
 
 }
