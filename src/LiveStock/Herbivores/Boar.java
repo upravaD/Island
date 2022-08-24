@@ -1,5 +1,7 @@
 package LiveStock.Herbivores;
 
+import java.util.List;
+
 public class Boar extends Herbivores {
 
     public Boar() {
@@ -9,4 +11,13 @@ public class Boar extends Herbivores {
         super.setFoolSaturation(50);
     }
 
+    @Override
+    public void eat(List<Object> list) {
+
+    }
+
+    @Override
+    public void move(List<Object> list) {
+
+    }
 }

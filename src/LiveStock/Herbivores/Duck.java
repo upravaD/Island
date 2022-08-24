@@ -1,5 +1,7 @@
 package LiveStock.Herbivores;
 
+import java.util.List;
+
 public class Duck extends Herbivores {
 
     public Duck() {
@@ -7,5 +9,15 @@ public class Duck extends Herbivores {
         super.setMaxValueOnBoard(200);
         super.setSpeed(4);
         super.setFoolSaturation(0.15);
+    }
+
+    @Override
+    public void eat(List<Object> list) {
+
+    }
+
+    @Override
+    public void move(List<Object> list) {
+
     }
 }

@@ -1,8 +1,10 @@
 package LiveStock.Herbivores;
 
 import LiveStock.Plants;
-import Main.Board.Board;
+import Main.Board.CellPosition;
 import Main.Main;
+
+import java.util.List;
 
 public class Rabbit extends Herbivores {
 
@@ -16,29 +18,26 @@ public class Rabbit extends Herbivores {
 
     }
     @Override
-    public void eat() {
-        for (int i = 0; i < Board.list0000.size(); i++) {
-            if (Board.list0000.get(i) instanceof Plants) {
-                Board.list0000.set(i, null);
-                Board.list0000.remove(null);
+    public void eat(List<Object> list) {
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) instanceof Plants) {
+                list.set(i, null);
+                list.remove(null);
                 System.out.println("Rabbit eat");
-            } else {
-                rabbit.setFoolSaturation(0.0);
-                Board.list0000.remove(rabbit);
             }
         }
     }
 
     @Override
-    public void move() {
-        for (int i = 0; i < Board.list0000.size(); i++) {
-            if (Board.list0000.get(i) instanceof Herbivores) {
-                Board.list0000.set(i, null);
-                Board.list0000.remove(null);
-                Board.list0001.add(Main.factory.createAnimal(8));
+    public void move(List<Object> list) {
+        int index = CellPosition.cellIndex(list);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) instanceof Herbivores) {
+                list.set(i, null);
+                list.remove(null);
+                CellPosition.changeCell(rabbit, index);
                 System.out.println("Rabbit move");
-            } else {
-                super.setFoolSaturation(0.45 - 0.15);
             }
         }
     }

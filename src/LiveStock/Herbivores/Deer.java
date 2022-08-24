@@ -1,5 +1,7 @@
 package LiveStock.Herbivores;
 
+import java.util.List;
+
 public class Deer extends Herbivores {
 
     public Deer() {
@@ -7,5 +9,15 @@ public class Deer extends Herbivores {
         super.setMaxValueOnBoard(20);
         super.setSpeed(4);
         super.setFoolSaturation(50);
+    }
+
+    @Override
+    public void eat(List<Object> list) {
+
+    }
+
+    @Override
+    public void move(List<Object> list) {
+
     }
 }

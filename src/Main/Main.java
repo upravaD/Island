@@ -4,38 +4,49 @@ import LiveStock.Animal.*;
 import LiveStock.Herbivores.Rabbit;
 import LiveStock.Plants;
 import Main.Board.Board;
+import Main.Board.CellPosition;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import static Main.Board.Board.*;
 
 public class Main {
 
-    Random random = new Random();
+    public static Random random = new Random();
     public static AnimalFactory factory = new AnimalFactory();
 
     public static void main(String[] args) {
-
+        //1 day
         printBoard();
-        list0000.add(0, new Plants());
-        list0000.add(1, factory.createAnimal(8));
-        list0000.add(2, factory.createAnimal(14));
-        list0001.add(0, new Plants());
+
+        //2 day
+        for (int i = 0; i < 9; i++) {
+            CellPosition.changeCell(new Plants(), i-1);
+        }
+
+        cell0000.add(factory.createAnimal(8));
+        //list0000.add(factory.createAnimal(14));
         initBoard();
         printBoard();
 
-        int x = 3;
+        //3-5 day
+        int x = 9;
+        int y = 0;
+
         while (x > 0) {
-            Rabbit.rabbit.eat();
-            Rabbit.rabbit.move();
+
+            if (CellPosition.getCellList(y).contains(Plants.plant)) {
+                Rabbit.rabbit.eat(CellPosition.getCellList(y));
+            } else {
+                Rabbit.rabbit.move(CellPosition.getCellList(y));
+                y++;
+            }
             Board.initBoard();
             printBoard();
             x--;
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

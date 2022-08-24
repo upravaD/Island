@@ -1,5 +1,7 @@
 package LiveStock.Herbivores;
 
+import java.util.List;
+
 public class Mouse extends Herbivores {
 
     public Mouse() {
@@ -7,5 +9,15 @@ public class Mouse extends Herbivores {
         super.setMaxValueOnBoard(500);
         super.setSpeed(1);
         super.setFoolSaturation(0.01);
+    }
+
+    @Override
+    public void eat(List<Object> list) {
+
+    }
+
+    @Override
+    public void move(List<Object> list) {
+
     }
 }

@@ -2,6 +2,8 @@ package LiveStock;
 
 public class Plants {
 
+    public static Plants plant = new Plants();
+
     private Double weight;
     private final int maxPlantsOnBoard;
 

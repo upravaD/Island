@@ -7,10 +7,10 @@ public abstract class Animal {
     private int speed;
     private double foolSaturation;
 
-    public abstract void eat();
-    public abstract void move();
-    public abstract void multiply();
-    public abstract void toDie();
+//    public abstract void eat();
+//    public abstract void move();
+//    public abstract void multiply();
+//    public abstract void toDie();
 
     public double getWeight() {
         return weight;

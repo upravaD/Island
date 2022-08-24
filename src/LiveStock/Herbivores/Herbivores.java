@@ -1,24 +1,18 @@
 package LiveStock.Herbivores;
 
 import LiveStock.Animal.Animal;
+import java.util.List;
 
 public abstract class Herbivores extends Animal {
-    @Override
-    public void eat() {
 
-    }
+    public abstract void eat(List<Object> list);
 
-    @Override
-    public void move() {
+    public abstract void move(List<Object> list);
 
-    }
-
-    @Override
     public void multiply() {
 
     }
 
-    @Override
     public void toDie() {
 
     }
