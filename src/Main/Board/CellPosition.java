@@ -8,6 +8,7 @@ import java.util.List;
 public class CellPosition {
 
     public static CellList[] cellIndexArray = CellList.values();
+    public static int currentPosition;
 
     public static int cellIndex(List<Object> list) {
         String name = "";
@@ -37,7 +38,7 @@ public class CellPosition {
     }
 
     public static void changeCell(Object obj, int index) {
-        index += 1;
+        //index += 1;
         if (index > CellList.values().length) {
             index = Main.random.nextInt(CellList.values().length);
         }
@@ -56,6 +57,10 @@ public class CellPosition {
         }
     }
     public static List<Object> getCellList(int index) {
+//        if (index > 9) {
+//            index = Main.random.nextInt(0,8);
+//        }
+        currentPosition = index;
         switch (index) {
             case 0 -> {return Board.cell0000;}
             case 1 -> {return Board.cell0001;}

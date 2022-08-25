@@ -8,4 +8,9 @@ public class Bear extends Predator {
         super.setSpeed(2);
         super.setFoolSaturation(80);
     }
+
+    @Override
+    public String getIcon() {
+        return null;
+    }
 }

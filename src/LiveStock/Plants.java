@@ -12,4 +12,7 @@ public class Plants {
         this.maxPlantsOnBoard = 200;
     }
 
+    public String getPlantIcon() {
+        return "\u2618";
+    }
 }

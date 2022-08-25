@@ -8,4 +8,9 @@ public class Fox extends Predator {
         super.setSpeed(2);
         super.setFoolSaturation(2);
     }
+
+    @Override
+    public String getIcon() {
+        return null;
+    }
 }

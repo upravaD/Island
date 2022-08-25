@@ -8,4 +8,9 @@ public class Eagle extends Predator {
         super.setSpeed(3);
         super.setFoolSaturation(1);
     }
+
+    @Override
+    public String getIcon() {
+        return null;
+    }
 }

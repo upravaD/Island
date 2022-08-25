@@ -8,4 +8,9 @@ public class Wolf extends Predator {
         super.setSpeed(3);
         super.setFoolSaturation(8);
     }
+
+    @Override
+    public String getIcon() {
+        return null;
+    }
 }

@@ -11,6 +11,7 @@ public abstract class Animal {
 //    public abstract void move();
 //    public abstract void multiply();
 //    public abstract void toDie();
+    public abstract String getIcon();
 
     public double getWeight() {
         return weight;

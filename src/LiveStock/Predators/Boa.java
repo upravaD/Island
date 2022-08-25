@@ -8,4 +8,9 @@ public class Boa extends Predator {
         super.setSpeed(1);
         super.setFoolSaturation(3);
     }
+
+    @Override
+    public String getIcon() {
+        return null;
+    }
 }

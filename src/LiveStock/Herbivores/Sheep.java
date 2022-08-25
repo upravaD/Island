@@ -20,4 +20,9 @@ public class Sheep extends Herbivores {
     public void move(List<Object> list) {
 
     }
+
+    @Override
+    public String getIcon() {
+        return null;
+    }
 }
