@@ -1,18 +1,15 @@
 package Main;
 
-import LiveStock.Animal.*;
+import LiveStock.Animal.AnimalFactory;
 import LiveStock.Herbivores.Rabbit;
 import LiveStock.Plants;
 import Main.Board.Board;
 import Main.Board.CellList;
 import Main.Board.CellPosition;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
-import static Main.Board.Board.*;
+import static Main.Board.Board.initBoard;
+import static Main.Board.Board.printBoard;
 
 public class Main {
 

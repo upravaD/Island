@@ -48,7 +48,7 @@ public class Rabbit extends Herbivores {
             if (list.get(i).equals(rabbit.getIcon())) {
                 list.remove(list.get(i));
                 if (index == 8) {
-                    CellPosition.changeCell(rabbit.getIcon(), 1);
+                    CellPosition.changeCell(rabbit.getIcon(), 0);
                     System.out.println("Rabbit move 2");
                 } else {
                     CellPosition.changeCell(rabbit.getIcon(), index+1);
@@ -60,7 +60,16 @@ public class Rabbit extends Herbivores {
 
     @Override
     public void multiply() {
-        cell0000.add(Main.factory.createAnimal(8).getIcon());
+        CellPosition
+                .getCellList(Main
+                                .random
+                                .nextInt(CellList
+                                        .values()
+                                        .length))
+                .add(Main
+                        .factory
+                        .createAnimal(8)
+                        .getIcon());
     }
 
     @Override
