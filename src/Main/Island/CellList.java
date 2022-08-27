@@ -1,4 +1,4 @@
-package Main.Board;
+package Main.Island;
 
 public enum CellList {
 

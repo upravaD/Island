@@ -1,16 +1,17 @@
-package Main.Board;
+package Main.Island;
 
 import java.util.*;
-
-public class Board {
+//Класс карты острова
+public class Island {
 
     public static int day = 1;
 
     //Параметры карты
     private static final int x = 3;
     private static final int y = 3;
-
     public static Object[][] island = new Object[x][y];
+
+    //Инициализация карты
     public static void initBoard() {
 
         island[0][0] = cell0000;
@@ -44,14 +45,14 @@ public class Board {
 
     //Вывод карты на экран
     public static void printBoard() {
-        System.out.println("\nКартина на " + Board.day + " день:\n");
-        for (int i = 0; i < Board.island.length; i++) {
-            for (int j = 0; j < Board.island[i].length; j++) {
-                System.out.print("  " + Board.island[i][j] + "  ");
+        System.out.println("\nКартина на " + Island.day + " день:\n");
+        for (int i = 0; i < Island.island.length; i++) {
+            for (int j = 0; j < Island.island[i].length; j++) {
+                System.out.print("  " + Island.island[i][j] + "  ");
             }
             System.out.println();
         }
         System.out.println();
-        Board.day++;
+        Island.day++;
     }
 }

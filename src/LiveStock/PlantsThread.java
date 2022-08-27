@@ -1,6 +1,6 @@
 package LiveStock;
 
-import Main.Board.Board;
+import Main.Island.Island;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +37,7 @@ public class PlantsThread extends Thread {
     private void bornPlants() {
         Random random = new Random();
         plantsMapValue.put(name, getWeight());
-        Board.boardListValue.add(0, PlantsThread.plantsMapValue);
+        Island.boardListValue.add(0, PlantsThread.plantsMapValue);
         boolean cancel = false;
 
         while (!cancel) {
@@ -50,12 +50,12 @@ public class PlantsThread extends Thread {
             plantsMapValue.replace(name, getWeight(), weight += random.nextInt(5));
 
             //Добавление List на карту
-            System.out.println("Картина на " + Board.day + " день:");
+            System.out.println("Картина на " + Island.day + " день:");
             int x = random.nextInt(3);
             int y = random.nextInt(3);
             //Board.island[x][y] = Arrays.toString(plantsMapValue.entrySet().toArray());
-            Board.island[x][y] = Arrays.toString(Board.boardListValue.toArray());
-            Board.printBoard();
+            Island.island[x][y] = Arrays.toString(Island.boardListValue.toArray());
+            Island.printBoard();
 
             //Период обновления
             try {

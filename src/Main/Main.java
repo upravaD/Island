@@ -3,13 +3,13 @@ package Main;
 import LiveStock.Animal.AnimalFactory;
 import LiveStock.Herbivores.Rabbit;
 import LiveStock.Plants;
-import Main.Board.Board;
-import Main.Board.CellList;
-import Main.Board.CellPosition;
+import Main.Island.Island;
+import Main.Island.CellList;
+import Main.Island.CellPosition;
 import java.util.Random;
 
-import static Main.Board.Board.initBoard;
-import static Main.Board.Board.printBoard;
+import static Main.Island.Island.initBoard;
+import static Main.Island.Island.printBoard;
 
 public class Main {
 
@@ -21,34 +21,22 @@ public class Main {
         printBoard();
 
         //2 day
-//        for (int i = 0; i < 9; i++) {
-//            CellPosition.changeCell(new Plants().getPlantIcon(), i-1);
-//        }
-
         Rabbit.rabbit.multiply();
-        //cell0000.add(factory.createAnimal(random.nextInt(AnimalType.values().length)));
-        //list0000.add(factory.createAnimal(14));
         initBoard();
         printBoard();
 
-        //3-5 day
+        //3-22 day
         int x = 20;
         int y = CellPosition.currentPosition;
-        //int y = 8;
-
         while (x > 0) {
-            //CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
+            CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
             Rabbit.rabbit.eat(CellPosition.getCellList(y));
             if (!(CellPosition.getCellList(y).contains(Plants.plant.getPlantIcon()))) {
                 Rabbit.rabbit.move(CellPosition.getCellList(y));
-                CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
+                //CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
                 y++;
             }
-//            if (y >= 8) {
-//                y = 0;
-//                Rabbit.rabbit.move(CellPosition.getCellList(y));
-//            }
-            Board.initBoard();
+            Island.initBoard();
             printBoard();
             x--;
         }

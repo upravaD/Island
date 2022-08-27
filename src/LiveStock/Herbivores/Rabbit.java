@@ -1,14 +1,11 @@
 package LiveStock.Herbivores;
 
-import LiveStock.Animal.AnimalFactory;
 import LiveStock.Plants;
-import Main.Board.CellList;
-import Main.Board.CellPosition;
+import Main.Island.CellList;
+import Main.Island.CellPosition;
 import Main.Main;
 
 import java.util.List;
-
-import static Main.Board.Board.cell0000;
 
 public class Rabbit extends Herbivores {
 
@@ -33,9 +30,17 @@ public class Rabbit extends Herbivores {
             if (list.get(i) instanceof Plants || list.get(i).equals(Plants.plant.getPlantIcon())) {
                 list.set(i, null);
                 list.remove(null);
+                super.setFoolSaturation(0.45);
                 System.out.println("Rabbit eat");
             } else {
-                System.out.println("Rabbit eat 2");
+                System.out.println("Rabbit not eat");
+                super.setFoolSaturation(rabbit.getFoolSaturation()-0.15);
+                if (rabbit.getFoolSaturation() < 0.01) {
+                    list.set(i, null);
+                    list.remove(null);
+                    System.out.println("Rabbit dead");
+                }
+                System.out.println(rabbit.getFoolSaturation());
                 //CellPosition.changeCell(rabbit.getIcon(), index+1);
             }
         }
@@ -60,16 +65,7 @@ public class Rabbit extends Herbivores {
 
     @Override
     public void multiply() {
-        CellPosition
-                .getCellList(Main
-                                .random
-                                .nextInt(CellList
-                                        .values()
-                                        .length))
-                .add(Main
-                        .factory
-                        .createAnimal(8)
-                        .getIcon());
+        CellPosition.getCellList(0).add(Main.factory.createAnimal(8).getIcon());
     }
 
     @Override
