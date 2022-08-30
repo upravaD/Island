@@ -18,10 +18,11 @@ public class Main {
 
     public static void main(String[] args) {
         //1 day
-        printBoard();
+        printBoard(); //Пустая карта
 
         //2 day
-        Rabbit.rabbit.multiply();
+        Rabbit.rabbit.multiply(); //
+        CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
         initBoard();
         printBoard();
 

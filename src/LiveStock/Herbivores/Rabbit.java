@@ -24,6 +24,7 @@ public class Rabbit extends Herbivores {
     }
 
     @Override
+    //
     public void eat(List<Object> list) {
         int index = CellPosition.cellIndex(list);
         for (int i = 0; i < list.size(); i++) {

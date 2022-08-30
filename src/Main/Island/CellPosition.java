@@ -7,21 +7,23 @@ import java.util.List;
 //Класс позиции обьекта
 public class CellPosition {
 
-    public static CellList[] cellIndexArray = CellList.values();
-    public static int currentPosition;
+    public static int currentPosition; // текущая позиция элемента в массиве island
+
     //Получение индекса ячейки по списку
-    public static int cellIndex(List<Object> list) {
-        String name = "";
-        for (int i = 0; i < Island.island.length; i++) {
-            for (int j = 0; j < Island.island[i].length; j++) {
-                if (Island.island[i][j].equals(list)) {
-                    name = ("0"+ i +"0"+ j);
+    public static int cellIndex(List<Object> list) { //Параметры: список ячейки массива island
+
+        String name = "";//локальная переменная
+
+        for (int i = 0; i < Island.island.length; i++) { // цикл по строкам массива island
+            for (int j = 0; j < Island.island[i].length; j++) { // цикл по столбцам массива island
+                if (Island.island[i][j].equals(list)) { // поиск списка ячейки list в массиве island
+                    name = ("0"+ i +"0"+ j); // инициализация локальной переменной
                 }
             }
         }
-        int index = -1;
+        int index = -1; // дефолтное значение индекса
         switch (name) {
-            //index 0-8
+            // значение index = 0-8
             case "0000" -> index = 0;
             case "0001" -> index = 1;
             case "0002" -> index = 2;
@@ -35,14 +37,19 @@ public class CellPosition {
             case "0202" -> index = 8;
         }
         return index;
+
+        // Алгоритм:
+        // метод ищет в массиве island список list, на основе которого возвращает index этого списка в массиве island.
+        // метод считается deprecated :)
     }
+
     //Смена позиции
-    public static void changeCell(Object obj, int index) {
-        //index += 1;
-        if (index > CellList.values().length) {
-            index = Main.random.nextInt(CellList.values().length);
+    public static void changeCell(Object obj, int index) { //Параметры: обьект списка ячейки массива island и индекс списка
+
+        if (index > CellList.values().length) {                     // еcли индекс больше кол-ва ячеек,
+            index = Main.random.nextInt(CellList.values().length);  // то выбираем рандомную ячейку
         }
-        switch (index) {
+        switch (index) { // добавление обьекта в список ячейки
             case 0 -> Island.cell0000.add(obj);
             case 1 -> Island.cell0001.add(obj);
             case 2 -> Island.cell0002.add(obj);
@@ -55,14 +62,17 @@ public class CellPosition {
             case 7 -> Island.cell0201.add(obj);
             case 8 -> Island.cell0202.add(obj);
         }
+        // Алгоритм:
+        // метод добавляет обьект obj в определенный список ячейки по индексу index
     }
+
     //Получение списка ячейки по индексу
-    public static List<Object> getCellList(int index) {
-//        if (index > 9) {
-//            index = Main.random.nextInt(0,8);
-//        }
-        currentPosition = index;
-        switch (index) {
+    public static List<Object> getCellList(int index) { //Параметры: индекс списка массива island
+
+        currentPosition = index; // обновление текущей позиции
+
+        switch (index) { //Возвращает определенный список ячейки массива island по индексу index
+
             case 0 -> {return Island.cell0000;}
             case 1 -> {return Island.cell0001;}
             case 2 -> {return Island.cell0002;}
@@ -75,6 +85,9 @@ public class CellPosition {
             case 7 -> {return Island.cell0201;}
             case 8 -> {return Island.cell0202;}
         }
-        return new ArrayList<>();
+        return null; // дефолтное значение
+
+        // Алгоритм:
+        // метод возвращает определенный список ячейки массива island по индексу index
     }
 }

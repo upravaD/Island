@@ -10,6 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+//Класс устаревший существует как черновик
 public class PlantsThread extends Thread {
 
     public String name = PlantsThread.class.getSimpleName();

@@ -14,7 +14,7 @@ public class Island {
     //Инициализация карты
     public static void initBoard() {
 
-        island[0][0] = cell0000;
+        island[0][0] = cell0000; // Каждая ячека массива инициализируется списком list
         island[0][1] = cell0001;
         island[0][2] = cell0002;
 
@@ -25,6 +25,9 @@ public class Island {
         island[2][0] = cell0200;
         island[2][1] = cell0201;
         island[2][2] = cell0202;
+
+        // Алгоритм:
+        // метод инициализирует массив island списками list, которые содержат в себе обьекты Animal и Plants
     }
 
     //Параметры клетки
