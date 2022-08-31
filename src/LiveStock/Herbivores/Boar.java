@@ -8,7 +8,7 @@ public class Boar extends Herbivores {
         super.setWeight(400);
         super.setMaxValueOnBoard(50);
         super.setSpeed(2);
-        super.setFoolSaturation(50);
+        super.setFoodSaturation(50);
     }
 
     @Override

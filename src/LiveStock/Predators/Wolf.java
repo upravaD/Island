@@ -6,7 +6,7 @@ public class Wolf extends Predator {
         super.setWeight(50);
         super.setMaxValueOnBoard(30);
         super.setSpeed(3);
-        super.setFoolSaturation(8);
+        super.setFoodSaturation(8);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package LiveStock.Herbivores;
 
 import LiveStock.Plants;
-import Main.Island.CellList;
 import Main.Island.CellPosition;
 import Main.Island.Island;
 import Main.Main;
@@ -16,7 +15,7 @@ public class Rabbit extends Herbivores {
         super.setWeight(2);
         super.setMaxValueOnBoard(150);
         super.setSpeed(2);
-        super.setFoolSaturation(0.45);
+        super.setFoodSaturation(0.45);
     }
 
     @Override
@@ -28,7 +27,7 @@ public class Rabbit extends Herbivores {
 
     @Override
     public void eat(List<Object> list) {
-        int index = CellPosition.cellIndex(list);
+//        int index = CellPosition.cellIndex(list);
 //        for (int i = 0; i < list.size()-1; i++) {
 //            if (list.get(i) instanceof Plants || list.get(i).equals(Plants.plant.getPlantIcon())) {
 //                list.set(i, null);
@@ -49,33 +48,36 @@ public class Rabbit extends Herbivores {
 //        }
         if (list.contains(Plants.plant.getPlantIcon())) {
             list.remove(Plants.plant.getPlantIcon());
-            super.setFoolSaturation(0.45);
+            super.setFoodSaturation(0.45);
             System.out.println("Rabbit eat");
             move(list);
         } else {
-            super.setFoolSaturation(rabbit.getFoolSaturation() - 0.05);
+            super.setFoodSaturation(rabbit.getFoodSaturation() - 0.05);
             System.out.println("Rabbit not eat");
             move(list);
-            if (rabbit.getFoolSaturation() < 0.01) {
+            if (rabbit.getFoodSaturation() < 0.01) {
                 list.remove(rabbit.getIcon());
                 System.out.println("Rabbit dead");
             }
-            System.out.println(rabbit.getFoolSaturation());
+            System.out.println(rabbit.getFoodSaturation());
         }
     }
 
         @Override
         public void move (List<Object> list) {
-            int index = CellPosition.cellIndex(list);
+            //int index = CellPosition.cellIndex(list);
+            int index = this.getCurrentPosition();
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).equals(rabbit.getIcon())) {
                     list.remove(list.get(i));
                     if (index == 8) {
                         CellPosition.changeCell(rabbit.getIcon(), 0);
                         System.out.println("Rabbit move 2");
+                        this.setCurrentPosition(0);
                     } else {
                         CellPosition.changeCell(rabbit.getIcon(), index + 1);
                         System.out.println("Rabbit move");
+                        this.setCurrentPosition(index + 1);
                     }
                 }
             }
@@ -83,8 +85,8 @@ public class Rabbit extends Herbivores {
 
         @Override
         public void multiply () {
-            Island.cell0000.add(Main.factory.createAnimal(8).getIcon());
-            //CellPosition.changeCell(Main.factory.createAnimal(8).getIcon(), Main.random.nextInt(9)); //(рандомный индекс < 9)
+            this.setCurrentPosition(Main.random.nextInt(9));
+            CellPosition.changeCell(Main.factory.createAnimal(8).getIcon(), this.getCurrentPosition()); //(рандомный индекс < 9)
             // Алгоритм:
             // метод создает rabbit в списке массива island (индекс = 0)
         }

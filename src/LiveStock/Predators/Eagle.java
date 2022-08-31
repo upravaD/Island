@@ -6,7 +6,7 @@ public class Eagle extends Predator {
         super.setWeight(6);
         super.setMaxValueOnBoard(20);
         super.setSpeed(3);
-        super.setFoolSaturation(1);
+        super.setFoodSaturation(1);
     }
 
     @Override

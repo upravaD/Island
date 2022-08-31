@@ -8,7 +8,7 @@ public class Horse extends Herbivores {
         super.setWeight(400);
         super.setMaxValueOnBoard(20);
         super.setSpeed(4);
-        super.setFoolSaturation(60);
+        super.setFoodSaturation(60);
     }
 
     @Override

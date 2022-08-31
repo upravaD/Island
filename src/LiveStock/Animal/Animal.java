@@ -2,15 +2,17 @@ package LiveStock.Animal;
 
 public abstract class Animal {
 
-    private double weight;
-    private int maxValueOnBoard;
-    private int speed;
-    private double foolSaturation;
+    private double weight; // Вес
+    private int maxValueOnBoard; // Максимальное кол-во обьектов на карте
+    private int speed; // Скорость
+    private double foodSaturation; // насыщение пищей
+    private int currentPosition; // текущая позиция элемента в массиве island
 
 //    public abstract void eat();
 //    public abstract void move();
 //    public abstract void multiply();
 //    public abstract void toDie();
+
     public abstract String getIcon();
 
     public double getWeight() {
@@ -34,11 +36,18 @@ public abstract class Animal {
         this.speed = speed;
     }
 
-    public double getFoolSaturation() {
-        return foolSaturation;
+    public double getFoodSaturation() {
+        return foodSaturation;
     }
-    public void setFoolSaturation(double foolSaturation) {
-        this.foolSaturation = foolSaturation;
+    public void setFoodSaturation(double foodSaturation) {
+        this.foodSaturation = foodSaturation;
+    }
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
     }
 }
 

@@ -8,7 +8,7 @@ public class Deer extends Herbivores {
         super.setWeight(300);
         super.setMaxValueOnBoard(20);
         super.setSpeed(4);
-        super.setFoolSaturation(50);
+        super.setFoodSaturation(50);
     }
 
     @Override

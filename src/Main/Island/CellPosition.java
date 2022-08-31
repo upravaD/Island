@@ -7,7 +7,7 @@ import java.util.List;
 //Класс позиции обьекта
 public class CellPosition {
 
-    public static int currentPosition; // текущая позиция элемента в массиве island
+    //public static int currentPosition;
 
     //Получение индекса ячейки по списку
     public static int cellIndex(List<Object> list) { //Параметры: список ячейки массива island
@@ -46,9 +46,9 @@ public class CellPosition {
     //Смена позиции
     public static void changeCell(Object obj, int index) { //Параметры: обьект списка ячейки массива island и индекс списка
 
-        if (index > CellList.values().length) {                     // еcли индекс больше кол-ва ячеек,
-            index = Main.random.nextInt(CellList.values().length);  // то выбираем рандомную ячейку
-        }
+//        if (index > CellList.values().length) {                     // еcли индекс больше кол-ва ячеек,
+//            index = Main.random.nextInt(CellList.values().length);  // то выбираем рандомную ячейку
+//        }
 
         //currentPosition = index;
 

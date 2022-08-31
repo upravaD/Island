@@ -6,6 +6,7 @@ import Main.Island.CellPosition;
 import Main.Island.Island;
 import Main.Main;
 
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -30,11 +31,12 @@ public class Initialize extends Thread {
     public void printDays() {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(64);
 
-        executorService.scheduleAtFixedRate(Island::printBoard, 0, dayDuration, TimeUnit.MILLISECONDS);
-        executorService.scheduleAtFixedRate(() -> Plants.plant.multiply(), 0, dayDuration, TimeUnit.MILLISECONDS);
-        executorService.scheduleAtFixedRate(() -> CellPosition.changeCell(Main.factory.createAnimal(Main.random.nextInt(3)).getIcon(), Main.random.nextInt(9)), 0, dayDuration, TimeUnit.MILLISECONDS);
-        executorService.scheduleAtFixedRate(() -> Rabbit.rabbit.eat(CellPosition.getCellList(0)), 0, dayDuration, TimeUnit.MILLISECONDS);
+        executorService.scheduleAtFixedRate(() -> Plants.plant.multiply(), 0, dayDuration-500, TimeUnit.MILLISECONDS);
+        //executorService.scheduleAtFixedRate(() -> CellPosition.changeCell(Main.factory.createAnimal(Main.random.nextInt(3)).getIcon(), Main.random.nextInt(9)), 0, dayDuration, TimeUnit.MILLISECONDS);
+        //Rabbit.rabbit.multiply();
+        executorService.scheduleAtFixedRate(() -> Rabbit.rabbit.eat(Objects.requireNonNull(CellPosition.getCellList(Rabbit.rabbit.getCurrentPosition()))), 0, dayDuration, TimeUnit.MILLISECONDS);
 
+        executorService.scheduleAtFixedRate(Island::printBoard, 0, dayDuration, TimeUnit.MILLISECONDS);
         try {
             Thread.sleep(daysNumber);
             executorService.shutdown(); // Завершение потока

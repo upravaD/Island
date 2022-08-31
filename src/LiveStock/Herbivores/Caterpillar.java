@@ -8,7 +8,7 @@ public class Caterpillar extends Herbivores {
         super.setWeight(0.01);
         super.setMaxValueOnBoard(1000);
         super.setSpeed(0);
-        super.setFoolSaturation(0);
+        super.setFoodSaturation(0);
     }
 
     @Override

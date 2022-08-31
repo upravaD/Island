@@ -8,7 +8,7 @@ public class Duck extends Herbivores {
         super.setWeight(1);
         super.setMaxValueOnBoard(200);
         super.setSpeed(4);
-        super.setFoolSaturation(0.15);
+        super.setFoodSaturation(0.15);
     }
 
     @Override

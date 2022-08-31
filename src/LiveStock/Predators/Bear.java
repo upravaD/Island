@@ -6,7 +6,7 @@ public class Bear extends Predator {
         super.setWeight(500);
         super.setMaxValueOnBoard(5);
         super.setSpeed(2);
-        super.setFoolSaturation(80);
+        super.setFoodSaturation(80);
     }
 
     @Override

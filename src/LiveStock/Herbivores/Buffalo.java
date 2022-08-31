@@ -8,7 +8,7 @@ public class Buffalo extends Herbivores {
         super.setWeight(700);
         super.setMaxValueOnBoard(10);
         super.setSpeed(3);
-        super.setFoolSaturation(100);
+        super.setFoodSaturation(100);
     }
 
     @Override

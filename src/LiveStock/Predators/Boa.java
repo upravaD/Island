@@ -6,7 +6,7 @@ public class Boa extends Predator {
         super.setWeight(15);
         super.setMaxValueOnBoard(30);
         super.setSpeed(1);
-        super.setFoolSaturation(3);
+        super.setFoodSaturation(3);
     }
 
     @Override

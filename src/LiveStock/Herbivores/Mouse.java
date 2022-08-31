@@ -8,7 +8,7 @@ public class Mouse extends Herbivores {
         super.setWeight(0.05);
         super.setMaxValueOnBoard(500);
         super.setSpeed(1);
-        super.setFoolSaturation(0.01);
+        super.setFoodSaturation(0.01);
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Goat extends Herbivores {
         super.setWeight(60);
         super.setMaxValueOnBoard(140);
         super.setSpeed(3);
-        super.setFoolSaturation(15);
+        super.setFoodSaturation(15);
     }
 
     @Override

@@ -6,7 +6,7 @@ public class Fox extends Predator {
         super.setWeight(8);
         super.setMaxValueOnBoard(30);
         super.setSpeed(2);
-        super.setFoolSaturation(2);
+        super.setFoodSaturation(2);
     }
 
     @Override
