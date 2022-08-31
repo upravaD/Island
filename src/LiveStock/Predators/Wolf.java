@@ -11,6 +11,6 @@ public class Wolf extends Predator {
 
     @Override
     public String getIcon() {
-        return null;
+        return "\uD83D\uDC3A";
     }
 }

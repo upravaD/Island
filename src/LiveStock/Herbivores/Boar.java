@@ -23,6 +23,6 @@ public class Boar extends Herbivores {
 
     @Override
     public String getIcon() {
-        return null;
+        return "🐗";
     }
 }

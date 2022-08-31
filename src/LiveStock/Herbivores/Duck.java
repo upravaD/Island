@@ -23,6 +23,6 @@ public class Duck extends Herbivores {
 
     @Override
     public String getIcon() {
-        return null;
+        return "\uD83E\uDD86";
     }
 }

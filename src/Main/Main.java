@@ -6,6 +6,8 @@ import LiveStock.Plants;
 import Main.Island.Island;
 import Main.Island.CellList;
 import Main.Island.CellPosition;
+import Main.Settings.Initialize;
+
 import java.util.Random;
 
 import static Main.Island.Island.initBoard;
@@ -17,29 +19,25 @@ public class Main {
     public static AnimalFactory factory = new AnimalFactory();
 
     public static void main(String[] args) {
-        //1 day
-        printBoard(); //Пустая карта
-
-        //2 day
-        Rabbit.rabbit.multiply(); //
-        CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
-        initBoard();
-        printBoard();
-
-        //3-22 day
-        int x = 20;
-        int y = CellPosition.currentPosition;
-        while (x > 0) {
-            CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
-            Rabbit.rabbit.eat(CellPosition.getCellList(y));
-            if (!(CellPosition.getCellList(y).contains(Plants.plant.getPlantIcon()))) {
-                Rabbit.rabbit.move(CellPosition.getCellList(y));
-                //CellPosition.changeCell(new Plants().getPlantIcon(), random.nextInt(CellList.values().length));
-                y++;
-            }
-            Island.initBoard();
-            printBoard();
-            x--;
-        }
+//        //1 day
+//        printBoard();
+//
+//        //2 day
+//        Rabbit.rabbit.multiply();
+//        Plants.plant.multiply();
+//        initBoard();
+//        printBoard();
+//
+//        //3-22 day
+//        int x = 0;
+//        while (x < 20) {
+//            Plants.plant.multiply();
+//            Rabbit.rabbit.eat(CellPosition.getCellList(x));
+//            Island.initBoard();
+//            printBoard();
+//            x++;
+//        }
+        Initialize init = new Initialize();
+        init.start();
     }
 }

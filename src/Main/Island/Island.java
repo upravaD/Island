@@ -4,7 +4,7 @@ import java.util.*;
 //Класс карты острова
 public class Island {
 
-    public static int day = 1;
+    public static int dayCount = 1;
 
     //Параметры карты
     private static final int x = 3;
@@ -48,7 +48,8 @@ public class Island {
 
     //Вывод карты на экран
     public static void printBoard() {
-        System.out.println("\nКартина на " + Island.day + " день:\n");
+        System.out.println("\nКартина на " + Island.dayCount + " день:\n");
+        initBoard();
         for (int i = 0; i < Island.island.length; i++) {
             for (int j = 0; j < Island.island[i].length; j++) {
                 System.out.print("  " + Island.island[i][j] + "  ");
@@ -56,6 +57,6 @@ public class Island {
             System.out.println();
         }
         System.out.println();
-        Island.day++;
+        Island.dayCount++;
     }
 }

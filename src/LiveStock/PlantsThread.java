@@ -51,7 +51,7 @@ public class PlantsThread extends Thread {
             plantsMapValue.replace(name, getWeight(), weight += random.nextInt(5));
 
             //Добавление List на карту
-            System.out.println("Картина на " + Island.day + " день:");
+            System.out.println("Картина на " + Island.dayCount + " день:");
             int x = random.nextInt(3);
             int y = random.nextInt(3);
             //Board.island[x][y] = Arrays.toString(plantsMapValue.entrySet().toArray());

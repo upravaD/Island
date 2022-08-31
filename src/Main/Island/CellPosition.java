@@ -1,9 +1,9 @@
 package Main.Island;
 
 import Main.Main;
-
 import java.util.ArrayList;
 import java.util.List;
+
 //Класс позиции обьекта
 public class CellPosition {
 
@@ -49,6 +49,9 @@ public class CellPosition {
         if (index > CellList.values().length) {                     // еcли индекс больше кол-ва ячеек,
             index = Main.random.nextInt(CellList.values().length);  // то выбираем рандомную ячейку
         }
+
+        //currentPosition = index;
+
         switch (index) { // добавление обьекта в список ячейки
             case 0 -> Island.cell0000.add(obj);
             case 1 -> Island.cell0001.add(obj);
@@ -69,7 +72,7 @@ public class CellPosition {
     //Получение списка ячейки по индексу
     public static List<Object> getCellList(int index) { //Параметры: индекс списка массива island
 
-        currentPosition = index; // обновление текущей позиции
+        //currentPosition = index; // обновление текущей позиции
 
         switch (index) { //Возвращает определенный список ячейки массива island по индексу index
 

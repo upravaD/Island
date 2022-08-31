@@ -23,6 +23,6 @@ public class Buffalo extends Herbivores {
 
     @Override
     public String getIcon() {
-        return null;
+        return "\uD83D\uDC03";
     }
 }

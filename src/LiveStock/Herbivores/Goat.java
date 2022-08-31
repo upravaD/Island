@@ -23,6 +23,6 @@ public class Goat extends Herbivores {
 
     @Override
     public String getIcon() {
-        return null;
+        return "\uD83D\uDC10";
     }
 }

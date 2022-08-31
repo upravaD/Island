@@ -11,6 +11,6 @@ public class Fox extends Predator {
 
     @Override
     public String getIcon() {
-        return null;
+        return "\uD83E\uDD8A";
     }
 }
