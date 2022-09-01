@@ -19,24 +19,6 @@ public class Main {
     public static AnimalFactory factory = new AnimalFactory();
 
     public static void main(String[] args) {
-//        //1 day
-//        printBoard();
-//
-//        //2 day
-//        Rabbit.rabbit.multiply();
-//        Plants.plant.multiply();
-//        initBoard();
-//        printBoard();
-//
-//        //3-22 day
-//        int x = 0;
-//        while (x < 20) {
-//            Plants.plant.multiply();
-//            Rabbit.rabbit.eat(CellPosition.getCellList(x));
-//            Island.initBoard();
-//            printBoard();
-//            x++;
-//        }
         Initialize init = new Initialize();
         init.start();
     }

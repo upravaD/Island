@@ -1,6 +1,7 @@
 package Main.Island;
 
 import LiveStock.Herbivores.Rabbit;
+import Main.Settings.StatisticData;
 
 import java.util.*;
 //Класс карты острова
@@ -60,6 +61,5 @@ public class Island {
         }
         System.out.println();
         Island.dayCount++;
-        System.out.println(Rabbit.rabbit.getCurrentPosition());
     }
 }

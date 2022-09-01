@@ -46,11 +46,7 @@ public class CellPosition {
     //Смена позиции
     public static void changeCell(Object obj, int index) { //Параметры: обьект списка ячейки массива island и индекс списка
 
-//        if (index > CellList.values().length) {                     // еcли индекс больше кол-ва ячеек,
-//            index = Main.random.nextInt(CellList.values().length);  // то выбираем рандомную ячейку
-//        }
 
-        //currentPosition = index;
 
         switch (index) { // добавление обьекта в список ячейки
             case 0 -> Island.cell0000.add(obj);

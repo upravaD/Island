@@ -1,5 +1,8 @@
 package Main.Settings;
 
+import LiveStock.Animal.AnimalFactory;
+import LiveStock.Animal.Animal;
+import LiveStock.Herbivores.Herbivores;
 import LiveStock.Herbivores.Rabbit;
 import LiveStock.Plants;
 import Main.Island.CellPosition;
@@ -15,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class Initialize extends Thread {
 
     public String name = Initialize.class.getSimpleName();
-    public int daysNumber = 10 * 1000; // Количество дней симуляции
+    public static int daysNumber = 10 * 1000; // Количество дней симуляции
     public int dayDuration = 1 * 1000; // Продолжительность одного дня симуляции
 
     public Initialize() {
@@ -25,21 +28,35 @@ public class Initialize extends Thread {
     @Override
     public void run() {
         Rabbit.rabbit.multiply();
-        printDays();
+//        Animal animalObject = Main.factory.createAnimal(8);
+//        CellPosition.changeCell(animalObject.getIcon(), Main.random.nextInt(9));
+        printDays(Rabbit.rabbit);
     }
 
-    public void printDays() {
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(64);
+    public void printDays(Animal animal) {
 
-        executorService.scheduleAtFixedRate(() -> Plants.plant.multiply(), 0, dayDuration-500, TimeUnit.MILLISECONDS);
-        //executorService.scheduleAtFixedRate(() -> CellPosition.changeCell(Main.factory.createAnimal(Main.random.nextInt(3)).getIcon(), Main.random.nextInt(9)), 0, dayDuration, TimeUnit.MILLISECONDS);
-        //Rabbit.rabbit.multiply();
-        executorService.scheduleAtFixedRate(() -> Rabbit.rabbit.eat(Objects.requireNonNull(CellPosition.getCellList(Rabbit.rabbit.getCurrentPosition()))), 0, dayDuration, TimeUnit.MILLISECONDS);
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 
-        executorService.scheduleAtFixedRate(Island::printBoard, 0, dayDuration, TimeUnit.MILLISECONDS);
+        executorService.scheduleAtFixedRate(() -> Plants.plant.multiply(),
+                0, dayDuration - 200, TimeUnit.MILLISECONDS);
+
+//        executorService.scheduleAtFixedRate(() -> CellPosition.changeCell
+//                (Main.factory.createAnimal(Main.random.nextInt(8,10)).getIcon(), Main.random.nextInt(9)),
+//                0, dayDuration, TimeUnit.MILLISECONDS);
+
+        if (animal instanceof Herbivores herbivores) {
+            executorService.scheduleAtFixedRate(() -> herbivores.eat
+                            (Objects.requireNonNull(CellPosition.getCellList(herbivores.getCurrentPosition()))),
+                    0, dayDuration, TimeUnit.MILLISECONDS);
+        }
+
+        executorService.scheduleAtFixedRate(Island::printBoard,
+                0, dayDuration, TimeUnit.MILLISECONDS);
+
         try {
             Thread.sleep(daysNumber);
             executorService.shutdown(); // Завершение потока
+            StatisticData.printData(); // Вывод статистики
             System.out.println("printDays shutdown");
         } catch (InterruptedException e) {
             System.out.println("ERROR");
@@ -49,5 +66,9 @@ public class Initialize extends Thread {
         // метод выводит в консоль инициализированный массив island
         // через определенный промежуток времени равный dayDuration
         // и определенное кол-во раз равное daysNumber
+    }
+
+    public Runnable task() {
+        return null;
     }
 }

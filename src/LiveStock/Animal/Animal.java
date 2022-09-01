@@ -5,15 +5,18 @@ public abstract class Animal {
     private double weight; // Вес
     private int maxValueOnBoard; // Максимальное кол-во обьектов на карте
     private int speed; // Скорость
-    private double foodSaturation; // насыщение пищей
-    private int currentPosition; // текущая позиция элемента в массиве island
-
-//    public abstract void eat();
-//    public abstract void move();
-//    public abstract void multiply();
-//    public abstract void toDie();
+    private double foodSaturation; // Текущее насыщение пищей
+    private double maxFoodSaturation; // Максимальное насыщение пищей
+    private int currentPosition; // Текущая позиция элемента в массиве island
 
     public abstract String getIcon();
+
+    public double getMaxFoodSaturation() {
+        return maxFoodSaturation;
+    }
+    public void setMaxFoodSaturation(double maxFoodSaturation) {
+        this.maxFoodSaturation = maxFoodSaturation;
+    }
 
     public double getWeight() {
         return weight;

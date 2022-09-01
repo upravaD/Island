@@ -1,16 +1,14 @@
 package LiveStock;
 
-import Main.Island.CellList;
 import Main.Island.CellPosition;
-import Main.Island.Island;
 import Main.Main;
 
 public class Plants {
 
     public static Plants plant = new Plants();
 
-    private Double weight;
-    private final int maxPlantsOnBoard;
+    public Double weight;
+    public final int maxPlantsOnBoard;
 
     public Plants() {
         this.weight = 1.0;
