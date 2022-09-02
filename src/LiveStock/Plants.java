@@ -1,7 +1,9 @@
 package LiveStock;
 
+import LiveStock.Herbivores.Caterpillar;
 import Main.Island.CellPosition;
 import Main.Main;
+import Main.Settings.StatisticData;
 
 public class Plants {
 
@@ -22,6 +24,9 @@ public class Plants {
     }
     public void multiply () {
         CellPosition.changeCell(new Plants().getPlantIcon(), Main.random.nextInt(9));
+        if (Main.random.nextBoolean()) Caterpillar.caterpillar.multiply();
+        System.out.println(this.getClass().getSimpleName() + " multiply");
+        StatisticData.plantBornCount++;
         // Алгоритм:
         // метод создает plant в списке массива island (рандомный индекс < 9)
     }

@@ -12,7 +12,7 @@ public class AnimalFactory {
         AnimalType name = animalTypes[index];
 
         return switch (name) {
-            //index 0-9
+            //  Травоядные index 0-9
             case BOAR -> new Boar();
             case BUFFALO -> new Buffalo();
             case CATERPILLAR -> new Caterpillar();
@@ -23,7 +23,7 @@ public class AnimalFactory {
             case MOUSE -> new Mouse();
             case RABBIT -> new Rabbit();
             case SHEEP -> new Sheep();
-            //index 10-14
+            // Хищники index 10-14
             case BEAR -> new Bear();
             case BOA -> new Boa();
             case EAGLE -> new Eagle();
@@ -31,5 +31,61 @@ public class AnimalFactory {
             case WOLF -> new Wolf();
 
         };
+    }
+    public Animal multiplyAnimal(int index) {
+
+        AnimalType name = animalTypes[index];
+
+        switch (name) {
+            // Травоядные index 0-9
+            case BOAR -> {
+                Boar.boar.multiply();
+                return Boar.boar;
+            }
+            case BUFFALO -> {
+                Buffalo.buffalo.multiply();
+                return Buffalo.buffalo;
+            }
+            case CATERPILLAR -> {
+                Caterpillar.caterpillar.multiply();
+                return Caterpillar.caterpillar;
+            }
+            case DEER -> {
+                Deer.deer.multiply();
+                return Deer.deer;
+            }
+            case DUCK -> {
+                Duck.duck.multiply();
+                return Duck.duck;
+            }
+            case GOAT -> {
+                Goat.goat.multiply();
+                return Goat.goat;
+            }
+            case HORSE -> {
+                Horse.horse.multiply();
+                return Horse.horse;
+            }
+            case MOUSE -> {
+                Mouse.mouse.multiply();
+                return Mouse.mouse;
+            }
+            case RABBIT -> {
+                Rabbit.rabbit.multiply();
+                return Rabbit.rabbit;
+            }
+            case SHEEP -> {
+                Sheep.sheep.multiply();
+                return Sheep.sheep;
+            }
+            // Хищники index 10-14
+            case BEAR -> new Bear().multiply();
+            case BOA -> new Boa().multiply();
+            case EAGLE -> new Eagle().multiply();
+            case FOX -> new Fox().multiply();
+            case WOLF -> new Wolf().multiply();
+
+        }
+        return null;
     }
 }

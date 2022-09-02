@@ -4,13 +4,11 @@ import LiveStock.Plants;
 import Main.Island.CellPosition;
 import Main.Main;
 import Main.Settings.StatisticData;
-
 import java.util.List;
-import java.util.Objects;
 
 public class Sheep extends Herbivores {
 
-    static Sheep sheep = new Sheep();
+    public static Sheep sheep = new Sheep();
 
     public Sheep() {
         super.setWeight(70);
@@ -18,7 +16,6 @@ public class Sheep extends Herbivores {
         super.setSpeed(3);
         super.setFoodSaturation(7);
         super.setMaxFoodSaturation(15);
-        System.out.println("Sheep burning");
     }
 
     @Override
@@ -37,9 +34,9 @@ public class Sheep extends Herbivores {
             super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight); // Увеличиваем значение насыщения foodSaturation
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
-                if (Main.random.nextInt(100) < 50) {
+                if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект sheep
-                    super.setFoodSaturation(0.2); // Устанавливаем новое значение foodSaturation
+                    super.setFoodSaturation(7); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.plantEatCount++;
@@ -53,6 +50,8 @@ public class Sheep extends Herbivores {
             move(list); // sheep двигается дальше
             if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем sheep из списка list
+                if (getFoodSaturation() > -0.01)
+                StatisticData.herbivoresDeadCount++;
                 System.out.println(this.getClass().getSimpleName() + " dead");
             }
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
@@ -83,15 +82,16 @@ public class Sheep extends Herbivores {
             }
         }
         // Алгоритм:
-        // метод меняет позицию rabbit между списками ячеек массива island в произвольном порядке или на первую ячейку массива island
+        // метод меняет позицию sheep между списками ячеек массива island в произвольном порядке или на первую ячейку массива island
     }
 
     @Override
     public void multiply() {
         this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(9).getIcon(), this.getCurrentPosition()); // Создаем sheep через AnimalFactory
+        StatisticData.herbivoresBornCount++;
         System.out.println(this.getClass().getSimpleName() + " multiply");
         // Алгоритм:
-        // метод создает rabbit в списке массива island
+        // метод создает sheep в списке массива island
     }
 }

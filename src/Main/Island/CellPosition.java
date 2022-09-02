@@ -1,13 +1,9 @@
 package Main.Island;
 
-import Main.Main;
-import java.util.ArrayList;
 import java.util.List;
 
 //Класс позиции обьекта
 public class CellPosition {
-
-    //public static int currentPosition;
 
     //Получение индекса ячейки по списку
     public static int cellIndex(List<Object> list) { //Параметры: список ячейки массива island
@@ -46,8 +42,6 @@ public class CellPosition {
     //Смена позиции
     public static void changeCell(Object obj, int index) { //Параметры: обьект списка ячейки массива island и индекс списка
 
-
-
         switch (index) { // добавление обьекта в список ячейки
             case 0 -> Island.cell0000.add(obj);
             case 1 -> Island.cell0001.add(obj);
@@ -67,8 +61,6 @@ public class CellPosition {
 
     //Получение списка ячейки по индексу
     public static List<Object> getCellList(int index) { //Параметры: индекс списка массива island
-
-        //currentPosition = index; // обновление текущей позиции
 
         switch (index) { //Возвращает определенный список ячейки массива island по индексу index
 

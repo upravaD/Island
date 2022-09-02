@@ -36,7 +36,7 @@ public class Rabbit extends Herbivores {
             super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight / 20); // Увеличиваем значение насыщения foodSaturation
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
-                if (Main.random.nextInt(100) < 50) {
+                if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект rabbit
                     super.setFoodSaturation(0.2); // Устанавливаем новое значение foodSaturation
                 }
@@ -52,12 +52,16 @@ public class Rabbit extends Herbivores {
             System.out.println(this.getClass().getSimpleName() + " not eat");
             if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем rabbit из списка list
+                if (getFoodSaturation() > -0.01)
+                StatisticData.herbivoresDeadCount++;
                 System.out.println(this.getClass().getSimpleName() + " dead");
             }
             move(list); // rabbit двигается дальше
 
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
+        // Алгоритм:
+        // метод
     }
 
     @Override
@@ -91,13 +95,9 @@ public class Rabbit extends Herbivores {
     public void multiply() {
         this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(8).getIcon(), this.getCurrentPosition()); // Создаем rabbit через AnimalFactory
+        StatisticData.herbivoresBornCount++;
         System.out.println(this.getClass().getSimpleName() + " multiply");
         // Алгоритм:
         // метод создает rabbit в списке массива island
-    }
-
-    @Override
-    public void toDie() {
-
     }
 }
