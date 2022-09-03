@@ -3,6 +3,7 @@ package LiveStock.Herbivores;
 import LiveStock.Plants;
 import Main.Island.CellPosition;
 import Main.Main;
+import Main.Settings.Color;
 import Main.Settings.StatisticData;
 
 import java.util.List;
@@ -15,14 +16,24 @@ public class Duck extends Herbivores {
         super.setWeight(1);
         super.setMaxValueOnBoard(200);
         super.setSpeed(4);
-        super.setFoodSaturation(0.07);
         super.setMaxFoodSaturation(0.15);
+        super.setFoodSaturation(getMaxFoodSaturation()/2);
     }
+
+    /**
+     *  Алгоритм getIcon():
+     *      метод возвращает изображение обьекта duck
+     */
 
     @Override
     public String getIcon() {
-        return "\uD83E\uDD86";
+        return Color.YELLOW_BOLD_BRIGHT + "\uD83E\uDD86" + Color.RESET;
     }
+
+    /**
+     *  Алгоритм eat():
+     *      метод реализует поведение травоядного по поеданию растений
+     */
 
     @Override
     public void eat(List<Object> list) { //Параметры: список ячейки массива island
@@ -30,7 +41,8 @@ public class Duck extends Herbivores {
         if (list.contains(Plants.plant.getPlantIcon())) { // Если список содержит plant
 
             list.remove(Plants.plant.getPlantIcon()); // Удаляем plant из списка list
-            super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight/100); // Увеличиваем значение насыщения foodSaturation
+            super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight/75); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.01)
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
@@ -38,21 +50,24 @@ public class Duck extends Herbivores {
                     super.setFoodSaturation(30); // Устанавливаем новое значение foodSaturation
                 }
             }
-            StatisticData.plantEatCount++;
-            System.out.println(this.getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times");
+            StatisticData.plantEatCount++; // Статистика
+            System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times" + Color.RESET);
             move(list); // duck двигается дальше
 
         } else { //Если список не содержит plant
 
-            super.setFoodSaturation(getFoodSaturation() - Plants.plant.weight/100); // Уменьшаем значение насыщения foodSaturation
+            super.setFoodSaturation(getFoodSaturation() - Plants.plant.weight/75); // Уменьшаем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.01)
             System.out.println(this.getClass().getSimpleName() + " not eat");
-            move(list); // duck двигается дальше
             if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем duck из списка list
-                if (getFoodSaturation() > -0.01)
-                StatisticData.herbivoresDeadCount++;
-                System.out.println(this.getClass().getSimpleName() + " dead");
+                if (getFoodSaturation() > -0.01) {
+                    StatisticData.herbivoresDeadCount++; // Статистика
+                    System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " dead" + Color.RESET);
+                }
             }
+            move(list); // duck двигается дальше
+            if (getFoodSaturation() > -0.01)
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
 
@@ -67,12 +82,16 @@ public class Duck extends Herbivores {
                     super.setFoodSaturation(30); // Устанавливаем новое значение foodSaturation
                 }
             }
-            StatisticData.caterpillarEatCount++;
             StatisticData.herbivoresDeadCount++;
             System.out.println(this.getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times");
             move(list); // duck двигается дальше
         }
     }
+
+    /**
+     *  Алгоритм move():
+     *      метод меняет позицию duck между списками ячеек массива island в произвольном порядке или на первую ячейку массива island
+     */
 
     @Override
     public void move(List<Object> list) { //Параметры: список ячейки массива island
@@ -97,17 +116,23 @@ public class Duck extends Herbivores {
                 }
             }
         }
-        // Алгоритм:
-        // метод меняет позицию duck между списками ячеек массива island в произвольном порядке или на первую ячейку массива island
     }
+
+    /**
+     *  Алгоритм multiply():
+     *      метод создает duck в списке массива island
+     */
 
     @Override
     public void multiply() {
         this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(4).getIcon(), this.getCurrentPosition()); // Создаем duck через AnimalFactory
-        StatisticData.herbivoresBornCount++;
-        System.out.println(this.getClass().getSimpleName() + " multiply");
-        // Алгоритм:
-        // метод создает duck в списке массива island
+        StatisticData.herbivoresBornCount++; // Статистика
+        System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
+    }
+
+    @Override
+    public void toDie() {
+
     }
 }

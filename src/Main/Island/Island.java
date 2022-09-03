@@ -1,6 +1,7 @@
 package Main.Island;
 
 import LiveStock.Herbivores.Rabbit;
+import Main.Settings.Color;
 import Main.Settings.StatisticData;
 
 import java.util.*;
@@ -13,6 +14,19 @@ public class Island {
     private static final int x = 3;
     private static final int y = 3;
     public static Object[][] island = new Object[x][y];
+
+    //Параметры клетки
+    public static List<Object> cell0000 = new ArrayList<>();
+    public static List<Object> cell0001 = new ArrayList<>();
+    public static List<Object> cell0002 = new ArrayList<>();
+
+    public static List<Object> cell0100 = new ArrayList<>();
+    public static List<Object> cell0101 = new ArrayList<>();
+    public static List<Object> cell0102 = new ArrayList<>();
+
+    public static List<Object> cell0200 = new ArrayList<>();
+    public static List<Object> cell0201 = new ArrayList<>();
+    public static List<Object> cell0202 = new ArrayList<>();
 
     //Инициализация карты
     public static void initBoard() {
@@ -28,30 +42,13 @@ public class Island {
         island[2][0] = cell0200;
         island[2][1] = cell0201;
         island[2][2] = cell0202;
-
         // Алгоритм:
         // метод инициализирует массив island списками list, которые содержат в себе обьекты Animal и Plants
     }
 
-    //Параметры клетки
-    public static List<Map<String, Double>> boardListValue = new ArrayList<>();
-
-    public static List<Object> cell0000 = new ArrayList<>();
-    public static List<Object> cell0001 = new ArrayList<>();
-    public static List<Object> cell0002 = new ArrayList<>();
-
-    public static List<Object> cell0100 = new ArrayList<>();
-    public static List<Object> cell0101 = new ArrayList<>();
-    public static List<Object> cell0102 = new ArrayList<>();
-
-    public static List<Object> cell0200 = new ArrayList<>();
-    public static List<Object> cell0201 = new ArrayList<>();
-    public static List<Object> cell0202 = new ArrayList<>();
-
-
     //Вывод карты на экран
     public static void printBoard() {
-        System.out.println("\nКартина на " + Island.dayCount + " день:\n");
+        System.out.println(Color.BLUE_UNDERLINED + "\nКартина на " + Island.dayCount + " день:\n" + Color.RESET);
         initBoard();
         for (int i = 0; i < Island.island.length; i++) {
             for (int j = 0; j < Island.island[i].length; j++) {

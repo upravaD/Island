@@ -3,6 +3,7 @@ package LiveStock.Herbivores;
 import LiveStock.Plants;
 import Main.Island.CellPosition;
 import Main.Main;
+import Main.Settings.Color;
 import Main.Settings.StatisticData;
 import java.util.List;
 
@@ -14,16 +15,24 @@ public class Sheep extends Herbivores {
         super.setWeight(70);
         super.setMaxValueOnBoard(140);
         super.setSpeed(3);
-        super.setFoodSaturation(7);
         super.setMaxFoodSaturation(15);
+        super.setFoodSaturation(getMaxFoodSaturation()/2);
     }
+
+    /**
+     *  Алгоритм getIcon():
+     *      метод возвращает изображение обьекта sheep
+     */
 
     @Override
     public String getIcon() {
-        return "\uD83D\uDC11";
-        // Алгоритм:
-        // метод возвращает изображение обьекта sheep
+        return Color.WHITE_BOLD + "\uD83D\uDC11"  + Color.RESET;
     }
+
+    /**
+     *  Алгоритм eat():
+     *      метод реализует поведение травоядного по поеданию растений
+     */
 
     @Override
     public void eat(List<Object> list) { //Параметры: список ячейки массива island
@@ -32,6 +41,7 @@ public class Sheep extends Herbivores {
 
             list.remove(Plants.plant.getPlantIcon()); // Удаляем plant из списка list
             super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.01)
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
@@ -40,23 +50,31 @@ public class Sheep extends Herbivores {
                 }
             }
             StatisticData.plantEatCount++;
-            System.out.println(this.getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times");
+            System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times" + Color.RESET);
             move(list); // sheep двигается дальше
 
         } else { //Если список не содержит plant
 
             super.setFoodSaturation(getFoodSaturation() - Plants.plant.weight); // Уменьшаем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.01)
             System.out.println(this.getClass().getSimpleName() + " not eat");
-            move(list); // sheep двигается дальше
             if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем sheep из списка list
-                if (getFoodSaturation() > -0.01)
-                StatisticData.herbivoresDeadCount++;
-                System.out.println(this.getClass().getSimpleName() + " dead");
+                if (getFoodSaturation() > -0.01) {
+                    StatisticData.herbivoresDeadCount++;
+                    System.out.println(this.getClass().getSimpleName() + " dead");
+                }
             }
+            move(list); // sheep двигается дальше
+            if (getFoodSaturation() > -0.01)
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
+
+    /**
+     *  Алгоритм move():
+     *      метод меняет позицию sheep между списками ячеек массива island в произвольном порядке или на первую ячейку массива island
+     */
 
     @Override
     public void move(List<Object> list) { //Параметры: список ячейки массива island
@@ -81,17 +99,23 @@ public class Sheep extends Herbivores {
                 }
             }
         }
-        // Алгоритм:
-        // метод меняет позицию sheep между списками ячеек массива island в произвольном порядке или на первую ячейку массива island
     }
+
+    /**
+     *  Алгоритм multiply():
+     *      метод создает sheep в списке массива island
+     */
 
     @Override
     public void multiply() {
         this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(9).getIcon(), this.getCurrentPosition()); // Создаем sheep через AnimalFactory
-        StatisticData.herbivoresBornCount++;
-        System.out.println(this.getClass().getSimpleName() + " multiply");
-        // Алгоритм:
-        // метод создает sheep в списке массива island
+        StatisticData.herbivoresBornCount++; // Статистика
+        System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
+    }
+
+    @Override
+    public void toDie() {
+
     }
 }

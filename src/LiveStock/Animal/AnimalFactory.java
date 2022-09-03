@@ -79,11 +79,26 @@ public class AnimalFactory {
                 return Sheep.sheep;
             }
             // Хищники index 10-14
-            case BEAR -> new Bear().multiply();
-            case BOA -> new Boa().multiply();
-            case EAGLE -> new Eagle().multiply();
-            case FOX -> new Fox().multiply();
-            case WOLF -> new Wolf().multiply();
+            case BEAR -> {
+                Bear.bear.multiply();
+                return Bear.bear;
+            }
+            case BOA -> {
+                Boa.boa.multiply();
+                return Boa.boa;
+            }
+            case EAGLE -> {
+                Eagle.eagle.multiply();
+                return Eagle.eagle;
+            }
+            case FOX -> {
+                Fox.fox.multiply();
+                return Fox.fox;
+            }
+            case WOLF -> {
+                Wolf.wolf.multiply();
+                return Wolf.wolf;
+            }
 
         }
         return null;
