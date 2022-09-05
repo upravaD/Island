@@ -1,8 +1,10 @@
 package LiveStock;
 
+import LiveStock.Animal.AnimalType;
 import LiveStock.Herbivores.Caterpillar;
 import Main.Island.Cell;
 import Main.Island.CellPosition;
+import Main.Island.Island;
 import Main.Main;
 import Main.Settings.Color;
 import Main.Settings.StatisticData;
@@ -34,7 +36,7 @@ public class Plants {
      */
 
     public void multiply () {
-        CellPosition.changeCell(new Plants().getPlantIcon(), Main.random.nextInt(Cell.values().length)); // Создаем plant
+        CellPosition.changeCell(new Plants().getPlantIcon(), Main.random.nextInt(Island.cellMaxSize)); // Создаем plant
         if (Main.random.nextInt(100) < 30) Caterpillar.caterpillar.multiply(); // Создаем caterpillar
         System.out.println(Color.GREEN_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
         StatisticData.plantBornCount++; // Статистика

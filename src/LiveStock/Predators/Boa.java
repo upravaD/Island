@@ -12,6 +12,7 @@ import Main.Settings.Color;
 import Main.Settings.StatisticData;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Boa extends Predator {
 
@@ -127,7 +128,6 @@ public class Boa extends Predator {
             if (getFoodSaturation() > -0.01)
                 System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
-
     }
     /**
      * Алгоритм move():
@@ -146,13 +146,13 @@ public class Boa extends Predator {
             if (list.get(i).equals(getIcon())) { // Если boa есть в списке list
                 list.remove(list.get(i)); // Удаляем boa из списка list
 
-                if (index == Cell.values().length-1) { // Если текущая позиция равна последней ячейке массива island
+                if (index == Island.cellMaxSize-1) { // Если текущая позиция равна последней ячейке массива island
                     CellPosition.changeCell(getIcon(), 0); // Меняем текущую позицию на первую ячейку массива island
                     System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " move in the begin" + Color.RESET);
                     this.setCurrentPosition(0); // Сохраняем значение текущей позиции
 
                 } else { // В любом другом случае
-                    index = Main.random.nextInt(Cell.values().length); // Устанавливаем рандомный индекс
+                    index = Main.random.nextInt(Island.cellMaxSize); // Устанавливаем рандомный индекс
                     CellPosition.changeCell(getIcon(), index); // Меняем текущую позицию на рандомную ячейку массива island
                     System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " random move" + Color.RESET);
                     this.setCurrentPosition(index); // Сохраняем значение текущей позиции
@@ -168,9 +168,10 @@ public class Boa extends Predator {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
+        this.setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(AnimalType.BOA.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем boa через AnimalFactory
         StatisticData.predatorBornCount++; // Статистика
+        eat(Objects.requireNonNull(CellPosition.getCellList(this.getCurrentPosition())));
         System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
     }
 

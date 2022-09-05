@@ -4,6 +4,7 @@ import LiveStock.Animal.AnimalType;
 import LiveStock.Plants;
 import Main.Island.Cell;
 import Main.Island.CellPosition;
+import Main.Island.Island;
 import Main.Main;
 import Main.Settings.Color;
 import Main.Settings.StatisticData;
@@ -42,34 +43,34 @@ public class Sheep extends Herbivores {
         if (list.contains(Plants.plant.getPlantIcon())) { // Если список содержит plant
 
             list.remove(Plants.plant.getPlantIcon()); // Удаляем plant из списка list
-            super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight); // Увеличиваем значение насыщения foodSaturation
+            setFoodSaturation(getFoodSaturation() + Plants.plant.weight); // Увеличиваем значение насыщения foodSaturation
             if (getFoodSaturation() > -0.01)
-            System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект sheep
-                    super.setFoodSaturation(7); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(7); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.plantEatCount++;
-            System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times" + Color.RESET);
+            System.out.println(Color.YELLOW_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.plantEatCount + " times" + Color.RESET);
             move(list); // sheep двигается дальше
 
         } else { //Если список не содержит plant
 
-            super.setFoodSaturation(getFoodSaturation() - Plants.plant.weight); // Уменьшаем значение насыщения foodSaturation
+            setFoodSaturation(getFoodSaturation() - Plants.plant.weight); // Уменьшаем значение насыщения foodSaturation
             if (getFoodSaturation() > -0.01)
-            System.out.println(this.getClass().getSimpleName() + " not eat");
+            System.out.println(getClass().getSimpleName() + " not eat");
             if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем sheep из списка list
                 if (getFoodSaturation() > -0.01) {
                     StatisticData.herbivoresDeadCount++;
-                    System.out.println(this.getClass().getSimpleName() + " dead");
+                    System.out.println(getClass().getSimpleName() + " dead");
                 }
             }
             move(list); // sheep двигается дальше
             if (getFoodSaturation() > -0.01)
-            System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
 
@@ -81,23 +82,23 @@ public class Sheep extends Herbivores {
     @Override
     public void move(List<Object> list) { //Параметры: список ячейки массива island
 
-        int index = this.getCurrentPosition(); // Текущая позиция в массиве island
+        int index = getCurrentPosition(); // Текущая позиция в массиве island
 
         for (int i = 0; i < list.size(); i++) { // Цикл по списку list
 
             if (list.get(i).equals(getIcon())) { // Если sheep есть в списке list
                 list.remove(list.get(i)); // Удаляем sheep из списка list
 
-                if (index == Cell.values().length-1) { // Если текущая позиция равна последней ячейке массива island
+                if (index == Island.cellMaxSize-1) { // Если текущая позиция равна последней ячейке массива island
                     CellPosition.changeCell(getIcon(), 0); // Меняем текущую позицию на первую ячейку массива island
-                    System.out.println(this.getClass().getSimpleName() + " move in the begin");
-                    this.setCurrentPosition(0); // Сохраняем значение текущей позиции
+                    System.out.println(getClass().getSimpleName() + " move in the begin");
+                    setCurrentPosition(0); // Сохраняем значение текущей позиции
 
                 } else { // В любом другом случае
-                    index = Main.random.nextInt(Cell.values().length); // Устанавливаем рандомный индекс
+                    index = Main.random.nextInt(Island.cellMaxSize); // Устанавливаем рандомный индекс
                     CellPosition.changeCell(getIcon(), index); // Меняем текущую позицию на рандомную ячейку массива island
-                    System.out.println(this.getClass().getSimpleName() + " random move");
-                    this.setCurrentPosition(index); // Сохраняем значение текущей позиции
+                    System.out.println(getClass().getSimpleName() + " random move");
+                    setCurrentPosition(index); // Сохраняем значение текущей позиции
                 }
             }
         }
@@ -110,10 +111,10 @@ public class Sheep extends Herbivores {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.SHEEP.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем sheep через AnimalFactory
+        setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.SHEEP.ordinal()).getIcon(), getCurrentPosition()); // Создаем sheep через AnimalFactory
         StatisticData.herbivoresBornCount++; // Статистика
-        System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
+        System.out.println(Color.YELLOW_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET);
     }
 
     @Override

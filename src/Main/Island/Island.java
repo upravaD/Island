@@ -10,7 +10,8 @@ public class Island {
     public static int dayCount = 1; // Счетчик дней симуляции
 
     //Параметры карты
-    public static int result = 0;
+    public static int scannerResult = 0;
+    public static int cellMaxSize;
     public static final int x = islandArraySize; // Строки массива island
     public static final int y = islandArraySize; // Столбцы массива island
     public static Object[][] island = new Object[x][y];
@@ -275,7 +276,7 @@ public class Island {
 
         System.out.println(Color.BLUE_UNDERLINED + "\nКартина на " + Island.dayCount + " день:\n" + Color.RESET);
 
-        switch (result) { // Инициализация массива island с учетом выбора пользователя
+        switch (scannerResult) { // Инициализация массива island с учетом выбора пользователя
             case 1 -> initBoard1();
             case 2 -> initBoard2();
             case 3 -> initBoard3();

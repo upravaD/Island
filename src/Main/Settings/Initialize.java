@@ -18,6 +18,8 @@ import static Main.Settings.IslandSettings.islandDays;
 //Класс реализации потоков
 public class Initialize extends Thread {
 
+    public static Animal[] animalArray;
+
     public static int daysNumber = islandDays * 1000; // Количество дней симуляции
     public int dayDuration = 1000; // Продолжительность одного дня симуляции
 
@@ -25,24 +27,36 @@ public class Initialize extends Thread {
         System.out.println("\n" + Initialize.class.getSimpleName() + " start\n");
     }
 
-    @Override
-    public void run() { // Запуск потока
+    /**
+     *    Запуск потока Initialize
+     */
 
-        Animal[] animalArray = new Animal[Island.island.length]; // Массив созданных обьктов Animal
+    @Override
+    public void run() {
+
+        animalArray = new Animal[Island.island.length]; // Массив созданных обьктов Animal
 
         for (int i = 0; i < animalArray.length; i++) {
-            animalArray[i] = Main.factory.multiplyAnimal
-                            (Main.random.nextInt(AnimalType.values().length-5));
+            animalArray[i] = Main.factory.multiplyAnimal(Main.random.nextInt(AnimalType.values().length-5));
+            //animalArray[i] = Main.factory.multiplyAnimal(AnimalType.RABBIT.ordinal());
         }
         for (int i = 0; i < animalArray.length/3; i++) {
             animalArray[i] = Main.factory.multiplyAnimal(Main.random.nextInt(AnimalType.values().length-4, AnimalType.values().length));
+            //animalArray[i] = Main.factory.multiplyAnimal(AnimalType.WOLF.ordinal());
         }
-        printDays(animalArray);
+        startExecutors(animalArray);
     }
 
-    public void printDays(Animal[] animalArray) {
+    /**
+     *  Алгоритм startExecutors(Animal[] animalArray):
+     *      метод выводит в консоль инициализированный массив island
+     *       через определенный промежуток времени равный dayDuration
+     *        и определенное кол-во раз равное daysNumber
+     */
 
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+    public void startExecutors(Animal[] animalArray) {
+
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
         executorService.scheduleAtFixedRate(() -> Plants.plant.multiply(),
                 0, dayDuration/3, TimeUnit.MILLISECONDS);
@@ -51,17 +65,17 @@ public class Initialize extends Thread {
             if (value instanceof Herbivores herbivores) {
                 executorService.scheduleAtFixedRate(() -> herbivores.eat
                                 (Objects.requireNonNull(CellPosition.getCellList(herbivores.getCurrentPosition()))),
-                        1000, dayDuration/herbivores.getSpeed(), TimeUnit.MILLISECONDS);
+                        100, dayDuration, TimeUnit.MILLISECONDS);
             }
             if (value instanceof Predator predator) {
                 executorService.scheduleAtFixedRate(() -> predator.eat
                                 (Objects.requireNonNull(CellPosition.getCellList(predator.getCurrentPosition()))),
-                        1000, dayDuration/predator.getSpeed(), TimeUnit.MILLISECONDS);
+                        100, dayDuration, TimeUnit.MILLISECONDS);
             }
         }
 
         executorService.scheduleAtFixedRate(Island::printBoard,
-                0, 1000, TimeUnit.MILLISECONDS);
+                0, dayDuration, TimeUnit.MILLISECONDS);
 
         try {
             Thread.sleep(daysNumber);
@@ -73,9 +87,5 @@ public class Initialize extends Thread {
             System.err.println("Interrupt ERROR");
             e.printStackTrace();
         }
-        // Алгоритм:
-        // метод выводит в консоль инициализированный массив island
-        // через определенный промежуток времени равный dayDuration
-        // и определенное кол-во раз равное daysNumber
     }
 }

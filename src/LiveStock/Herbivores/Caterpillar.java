@@ -4,6 +4,7 @@ import LiveStock.Animal.AnimalType;
 import LiveStock.Plants;
 import Main.Island.Cell;
 import Main.Island.CellPosition;
+import Main.Island.Island;
 import Main.Main;
 import Main.Settings.Color;
 import Main.Settings.StatisticData;
@@ -37,9 +38,9 @@ public class Caterpillar extends Herbivores {
 
     @Override
     public void eat(List<Object> list) { //Параметры: список ячейки массива island
-        if (list.contains(Caterpillar.caterpillar.getIcon())) { // Если список содержит caterpillar
+        if (list.contains(Plants.plant.getPlantIcon())) { // Если список содержит caterpillar
             list.remove(Caterpillar.caterpillar.getIcon()); // Удаляем caterpillar из списка list
-            System.out.println(this.getClass().getSimpleName() + " eat");
+            System.out.println(getClass().getSimpleName() + " eat");
             //move(list); // caterpillar двигается дальше
         }
     }
@@ -56,10 +57,10 @@ public class Caterpillar extends Herbivores {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.CATERPILLAR.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем caterpillar через AnimalFactory
-        System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
-        StatisticData.herbivoresBornCount++;
+        setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.CATERPILLAR.ordinal()).getIcon(), getCurrentPosition()); // Создаем caterpillar через AnimalFactory
+        System.out.println(Color.YELLOW_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET);
+        //StatisticData.herbivoresBornCount++;
     }
 
     @Override

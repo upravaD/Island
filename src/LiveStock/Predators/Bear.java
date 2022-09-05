@@ -2,15 +2,11 @@ package LiveStock.Predators;
 
 import LiveStock.Animal.AnimalType;
 import LiveStock.Herbivores.*;
-import LiveStock.Plants;
-import Main.Island.Cell;
 import Main.Island.CellPosition;
 import Main.Island.Island;
 import Main.Main;
 import Main.Settings.Color;
 import Main.Settings.StatisticData;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -250,23 +246,23 @@ public class Bear extends Predator {
 
         //System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " = " + this.getCurrentPosition() + Color.RESET);
 
-        int index = this.getCurrentPosition(); // Текущая позиция в массиве island
+        int index = getCurrentPosition(); // Текущая позиция в массиве island
 
         for (int i = 0; i < list.size(); i++) { // Цикл по списку list
 
             if (list.get(i).equals(getIcon())) { // Если bear есть в списке list
                 list.remove(list.get(i)); // Удаляем bear из списка list
 
-                if (index == Cell.values().length-1) { // Если текущая позиция равна последней ячейке массива island
+                if (index == Island.cellMaxSize-1) { // Если текущая позиция равна последней ячейке массива island
                     CellPosition.changeCell(getIcon(), 0); // Меняем текущую позицию на первую ячейку массива island
-                    System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " move in the begin" + Color.RESET);
-                    this.setCurrentPosition(0); // Сохраняем значение текущей позиции
+                    System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " move in the begin" + Color.RESET);
+                    setCurrentPosition(0); // Сохраняем значение текущей позиции
 
                 } else { // В любом другом случае
-                    index = Main.random.nextInt(Cell.values().length); // Устанавливаем рандомный индекс
+                    index = Main.random.nextInt(Island.cellMaxSize); // Устанавливаем рандомный индекс
                     CellPosition.changeCell(getIcon(), index); // Меняем текущую позицию на рандомную ячейку массива island
-                    System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " random move" + Color.RESET);
-                    this.setCurrentPosition(index); // Сохраняем значение текущей позиции
+                    System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " random move" + Color.RESET);
+                    setCurrentPosition(index); // Сохраняем значение текущей позиции
                 }
             }
         }
@@ -279,10 +275,11 @@ public class Bear extends Predator {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.BEAR.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем bear через AnimalFactory
+        setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.BEAR.ordinal()).getIcon(), getCurrentPosition()); // Создаем bear через AnimalFactory
         StatisticData.predatorBornCount++; // Статистика
-        System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
+        eat(Objects.requireNonNull(CellPosition.getCellList(getCurrentPosition())));
+        System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET);
     }
 
     @Override
