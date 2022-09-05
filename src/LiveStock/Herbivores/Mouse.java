@@ -1,6 +1,8 @@
 package LiveStock.Herbivores;
 
+import LiveStock.Animal.AnimalType;
 import LiveStock.Plants;
+import Main.Island.Cell;
 import Main.Island.CellPosition;
 import Main.Main;
 import Main.Settings.Color;
@@ -37,12 +39,12 @@ public class Mouse extends Herbivores {
 
             list.remove(Plants.plant.getPlantIcon()); // Удаляем plant из списка list
             super.setFoodSaturation(getFoodSaturation() + Plants.plant.weight/1000); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
+            if (getFoodSaturation() > -0.001)
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект mouse
-                    super.setFoodSaturation(0.005); // Устанавливаем новое значение foodSaturation
+                    super.setFoodSaturation(getMaxFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.plantEatCount++;
@@ -52,17 +54,17 @@ public class Mouse extends Herbivores {
         } else { //Если список не содержит plant
 
             super.setFoodSaturation(getFoodSaturation() - Plants.plant.weight/1000); // Уменьшаем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
+            if (getFoodSaturation() > -0.001)
             System.out.println(this.getClass().getSimpleName() + " not eat");
             if (getFoodSaturation() < 0.001) { // Если значение foodSaturation меньше 0.001
                 list.remove(getIcon()); // Удаляем mouse из списка list
-                if (getFoodSaturation() > -0.01) {
+                if (getFoodSaturation() > -0.001) {
                     StatisticData.herbivoresDeadCount++;
                     System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " dead" + Color.RESET);
                 }
             }
             move(list); // mouse двигается дальше
-            if (getFoodSaturation() > -0.01)
+            if (getFoodSaturation() > -0.001)
             System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
@@ -82,13 +84,13 @@ public class Mouse extends Herbivores {
             if (list.get(i).equals(getIcon())) { // Если mouse есть в списке list
                 list.remove(list.get(i)); // Удаляем mouse из списка list
 
-                if (index == 8) { // Если текущая позиция равна последней ячейке массива island
+                if (index == Cell.values().length-1) { // Если текущая позиция равна последней ячейке массива island
                     CellPosition.changeCell(getIcon(), 0); // Меняем текущую позицию на первую ячейку массива island
                     System.out.println(this.getClass().getSimpleName() + " move in the begin");
                     this.setCurrentPosition(0); // Сохраняем значение текущей позиции
 
                 } else { // В любом другом случае
-                    index = Main.random.nextInt(0, 9); // Устанавливаем рандомный индекс
+                    index = Main.random.nextInt(Cell.values().length); // Устанавливаем рандомный индекс
                     CellPosition.changeCell(getIcon(), index); // Меняем текущую позицию на рандомную ячейку массива island
                     System.out.println(this.getClass().getSimpleName() + " random move");
                     this.setCurrentPosition(index); // Сохраняем значение текущей позиции
@@ -104,8 +106,8 @@ public class Mouse extends Herbivores {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(7).getIcon(), this.getCurrentPosition()); // Создаем mouse через AnimalFactory
+        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.MOUSE.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем mouse через AnimalFactory
         StatisticData.herbivoresBornCount++; // Статистика
         System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
     }

@@ -1,6 +1,8 @@
 package LiveStock.Herbivores;
 
+import LiveStock.Animal.AnimalType;
 import LiveStock.Plants;
+import Main.Island.Cell;
 import Main.Island.CellPosition;
 import Main.Main;
 import Main.Settings.Color;
@@ -86,13 +88,13 @@ public class Sheep extends Herbivores {
             if (list.get(i).equals(getIcon())) { // Если sheep есть в списке list
                 list.remove(list.get(i)); // Удаляем sheep из списка list
 
-                if (index == 8) { // Если текущая позиция равна последней ячейке массива island
+                if (index == Cell.values().length-1) { // Если текущая позиция равна последней ячейке массива island
                     CellPosition.changeCell(getIcon(), 0); // Меняем текущую позицию на первую ячейку массива island
                     System.out.println(this.getClass().getSimpleName() + " move in the begin");
                     this.setCurrentPosition(0); // Сохраняем значение текущей позиции
 
                 } else { // В любом другом случае
-                    index = Main.random.nextInt(0, 9); // Устанавливаем рандомный индекс
+                    index = Main.random.nextInt(Cell.values().length); // Устанавливаем рандомный индекс
                     CellPosition.changeCell(getIcon(), index); // Меняем текущую позицию на рандомную ячейку массива island
                     System.out.println(this.getClass().getSimpleName() + " random move");
                     this.setCurrentPosition(index); // Сохраняем значение текущей позиции
@@ -108,8 +110,8 @@ public class Sheep extends Herbivores {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(9).getIcon(), this.getCurrentPosition()); // Создаем sheep через AnimalFactory
+        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.SHEEP.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем sheep через AnimalFactory
         StatisticData.herbivoresBornCount++; // Статистика
         System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
     }

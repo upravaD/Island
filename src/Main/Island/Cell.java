@@ -5,25 +5,94 @@ import java.util.List;
 
 public enum Cell {
 
-    cell0000(new ArrayList<>()),
-    cell0001(new ArrayList<>()),
-    cell0002(new ArrayList<>()),
+    cell0000,
+    cell0001,
+    cell0002,
+    cell0003,
+    cell0004,
+    cell0005,
+    cell0006,
+    cell0007,
+    cell0008,
 
-    cell0100(new ArrayList<>()),
-    cell0101(new ArrayList<>()),
-    cell0102(new ArrayList<>()),
+    cell0100,
+    cell0101,
+    cell0102,
+    cell0103,
+    cell0104,
+    cell0105,
+    cell0106,
+    cell0107,
+    cell0108,
 
-    cell0200(new ArrayList<>()),
-    cell0201(new ArrayList<>()),
-    cell0202(new ArrayList<>());
+    cell0200,
+    cell0201,
+    cell0202,
+    cell0203,
+    cell0204,
+    cell0205,
+    cell0206,
+    cell0207,
+    cell0208,
 
-    private final List<Object> cell0000TEMP;
+    cell0300,
+    cell0301,
+    cell0302,
+    cell0303,
+    cell0304,
+    cell0305,
+    cell0306,
+    cell0307,
+    cell0308,
 
-    Cell(List<Object> cell0000TEMP) {
-        this.cell0000TEMP = cell0000TEMP;
-    }
+    cell0400,
+    cell0401,
+    cell0402,
+    cell0403,
+    cell0404,
+    cell0405,
+    cell0406,
+    cell0407,
+    cell0408,
 
-    public List<Object> toList() {
-        return cell0000TEMP;
-    }
+    cell0500,
+    cell0501,
+    cell0502,
+    cell0503,
+    cell0504,
+    cell0505,
+    cell0506,
+    cell0507,
+    cell0508,
+
+    cell0600,
+    cell0601,
+    cell0602,
+    cell0603,
+    cell0604,
+    cell0605,
+    cell0606,
+    cell0607,
+    cell0608,
+
+    cell0700,
+    cell0701,
+    cell0702,
+    cell0703,
+    cell0704,
+    cell0705,
+    cell0706,
+    cell0707,
+    cell0708,
+
+    cell0800,
+    cell0801,
+    cell0802,
+    cell0803,
+    cell0804,
+    cell0805,
+    cell0806,
+    cell0807,
+    cell0808
+
 }

@@ -1,6 +1,8 @@
 package LiveStock.Herbivores;
 
+import LiveStock.Animal.AnimalType;
 import LiveStock.Plants;
+import Main.Island.Cell;
 import Main.Island.CellPosition;
 import Main.Main;
 import Main.Settings.Color;
@@ -54,8 +56,8 @@ public class Caterpillar extends Herbivores {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(9)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(2).getIcon(), this.getCurrentPosition()); // Создаем caterpillar через AnimalFactory
+        this.setCurrentPosition(Main.random.nextInt(Cell.values().length)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.CATERPILLAR.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем caterpillar через AnimalFactory
         System.out.println(Color.YELLOW_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
         StatisticData.herbivoresBornCount++;
     }
