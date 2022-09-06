@@ -36,14 +36,36 @@ public class Initialize extends Thread {
 
         animalArray = new Animal[Island.island.length]; // Массив созданных обьктов Animal
 
-        for (int i = 0; i < animalArray.length; i++) {
+        for (int i = 0; i < animalArray.length; i++) { // Создание травоядных
             animalArray[i] = Main.factory.multiplyAnimal(Main.random.nextInt(AnimalType.values().length-5));
             //animalArray[i] = Main.factory.multiplyAnimal(AnimalType.RABBIT.ordinal());
         }
-        for (int i = 0; i < animalArray.length/3; i++) {
+        for (int i = 0; i < animalArray.length/3; i++) { // Создание хищников
             animalArray[i] = Main.factory.multiplyAnimal(Main.random.nextInt(AnimalType.values().length-4, AnimalType.values().length));
             //animalArray[i] = Main.factory.multiplyAnimal(AnimalType.WOLF.ordinal());
         }
+
+        // Тестовый цикл
+
+//        while (islandDays > 0) {
+//            Plants.plant.multiply();
+//            Plants.plant.multiply();
+//            Plants.plant.multiply();
+//            for (int i = 0; i < animalArray.length; i++) {
+//                if (animalArray[i] instanceof Herbivores herbivores) {
+//                    if (herbivores.getFoodSaturation() < 0) animalArray[i] = null;
+//                    herbivores.eat(Objects.requireNonNull(CellPosition.getCellList(herbivores.getCurrentPosition())));
+//                }
+//                if (animalArray[i] instanceof Predator predator) {
+//                    if (predator.getFoodSaturation() < 0) animalArray[i] = null;
+//                    predator.eat(Objects.requireNonNull(CellPosition.getCellList(predator.getCurrentPosition())));
+//                }
+//            }
+//            Island.printBoard();
+//            islandDays--;
+//        }
+//        StatisticData.printData();
+
         startExecutors(animalArray);
     }
 
@@ -56,18 +78,18 @@ public class Initialize extends Thread {
 
     public void startExecutors(Animal[] animalArray) {
 
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(16);
 
         executorService.scheduleAtFixedRate(() -> Plants.plant.multiply(),
                 0, dayDuration/3, TimeUnit.MILLISECONDS);
 
         for (Animal value : animalArray) {
-            if (value instanceof Herbivores herbivores) {
+            if (value instanceof Herbivores herbivores && value.getFoodSaturation() > 0.0001) {
                 executorService.scheduleAtFixedRate(() -> herbivores.eat
                                 (Objects.requireNonNull(CellPosition.getCellList(herbivores.getCurrentPosition()))),
                         100, dayDuration, TimeUnit.MILLISECONDS);
             }
-            if (value instanceof Predator predator) {
+            if (value instanceof Predator predator && value.getFoodSaturation() > 0.0001) {
                 executorService.scheduleAtFixedRate(() -> predator.eat
                                 (Objects.requireNonNull(CellPosition.getCellList(predator.getCurrentPosition()))),
                         100, dayDuration, TimeUnit.MILLISECONDS);

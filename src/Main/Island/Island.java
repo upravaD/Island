@@ -269,7 +269,7 @@ public class Island {
 
     /**
      * Алгоритм printBoard():
-     * метод выводит массив инициализированный island в консоль.
+     * метод выводит инициализированный массив island в консоль.
      */
 
     public static void printBoard() {
@@ -282,7 +282,7 @@ public class Island {
             case 3 -> initBoard3();
         }
 
-        for (int i = 0; i < Island.island.length; i++) {
+        for (int i = 0; i < Island.island.length; i++) { // Вывод массива в консоль
             for (int j = 0; j < Island.island[i].length; j++) {
                 System.out.print("  " + Island.island[i][j] + "  ");
             }

@@ -21,7 +21,7 @@ public class Rabbit extends Herbivores {
         super.setMaxValueOnBoard(150);
         super.setSpeed(2);
         super.setMaxFoodSaturation(0.45);
-        super.setFoodSaturation(getMaxFoodSaturation()/2);
+        super.setFoodSaturation(0.25);
     }
 
     /**
@@ -45,7 +45,7 @@ public class Rabbit extends Herbivores {
         if (list.contains(Plants.plant.getPlantIcon())) { // Если список содержит plant
 
             list.remove(Plants.plant.getPlantIcon()); // Удаляем plant из списка list
-            setFoodSaturation(getFoodSaturation() + Plants.plant.weight / 20); // Увеличиваем значение насыщения foodSaturation
+            setFoodSaturation(getFoodSaturation() + 0.05); // Увеличиваем значение насыщения foodSaturation
             if (getFoodSaturation() > -0.01)
             System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
@@ -61,18 +61,18 @@ public class Rabbit extends Herbivores {
         }
         else { //Если список не содержит plant
 
-            setFoodSaturation(getFoodSaturation() - Plants.plant.weight / 20); // Уменьшаем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.001)
+            setFoodSaturation(getFoodSaturation() - 0.05); // Уменьшаем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
             System.out.println(getClass().getSimpleName() + " not eat");
-            if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
+            if (getFoodSaturation() < 0.0001) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем rabbit из списка list
-                if (getFoodSaturation() > -0.001) {
+                if (getFoodSaturation() > -0.0001) {
                     StatisticData.herbivoresDeadCount++; // Статистика
                     System.out.println(Color.YELLOW_UNDERLINED + getClass().getSimpleName() + " dead" + Color.RESET);
                 }
             }
             move(list); // rabbit двигается дальше
-            if (getFoodSaturation() > -0.001)
+            if (getFoodSaturation() > -0.0001)
             System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
@@ -114,15 +114,13 @@ public class Rabbit extends Herbivores {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
+        setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(AnimalType.RABBIT.ordinal()).getIcon(), getCurrentPosition()); // Создаем rabbit через AnimalFactory
         StatisticData.herbivoresBornCount++; // Статистика
-        eat(Objects.requireNonNull(CellPosition.getCellList(getCurrentPosition())));
         System.out.println(Color.YELLOW_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET + getCurrentPosition());
     }
 
     @Override
     public void toDie() {
-
     }
 }

@@ -78,6 +78,7 @@ public class AnimalFactory {
                 Sheep.sheep.multiply();
                 return Sheep.sheep;
             }
+
             // Хищники index 10-14
             case BEAR -> {
                 Bear.bear.multiply();

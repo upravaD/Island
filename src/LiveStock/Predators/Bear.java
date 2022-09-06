@@ -43,196 +43,196 @@ public class Bear extends Predator {
         if (list.contains(Horse.horse.getIcon()) && Main.random.nextInt(101) < 40) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Horse.horse.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Horse.horse.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Horse.horse.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Deer.deer.getIcon()) && Main.random.nextInt(101) < 60) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Deer.deer.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Deer.deer.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Deer.deer.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Rabbit.rabbit.getIcon()) && Main.random.nextInt(101) < 80) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Rabbit.rabbit.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Rabbit.rabbit.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Rabbit.rabbit.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Mouse.mouse.getIcon()) && Main.random.nextInt(101) < 90) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Mouse.mouse.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Mouse.mouse.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Mouse.mouse.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Goat.goat.getIcon()) && Main.random.nextInt(101) < 70) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Goat.goat.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Goat.goat.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Goat.goat.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Sheep.sheep.getIcon()) && Main.random.nextInt(101) < 65) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Sheep.sheep.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Sheep.sheep.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Sheep.sheep.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Boar.boar.getIcon()) && Main.random.nextInt(101) < 65) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Boar.boar.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Boar.boar.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Boar.boar.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Buffalo.buffalo.getIcon()) && Main.random.nextInt(101) < 20) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Buffalo.buffalo.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Buffalo.buffalo.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Buffalo.buffalo.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
 
         }
         else if (list.contains(Duck.duck.getIcon()) && Main.random.nextInt(101) < 10) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Duck.duck.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Duck.duck.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Duck.duck.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
         }
         else if (list.contains(Boa.boa.getIcon()) && Main.random.nextInt(101) < 80) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Boa.boa.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Boa.boa.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Boa.boa.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект bear
-                    super.setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation() / 2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //bear двигается дальше
         }
         else { //Если список не содержит animal
 
-            super.setFoodSaturation(getFoodSaturation() - getWeight()/20); // Уменьшаем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " not eat" + Color.RESET);
-            if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
+            setFoodSaturation(getFoodSaturation() - getWeight()/20); // Уменьшаем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " not eat" + Color.RESET);
+            if (getFoodSaturation() < 0.0001) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем bear из списка list
-                if (getFoodSaturation() > -0.01) {
+                if (getFoodSaturation() > -0.0001) {
                     StatisticData.predatorDeadCount++; // Статистика
-                    System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " dead" + Color.RESET);
+                    System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " dead" + Color.RESET);
                 }
             }
             move(list); // bear двигается дальше
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
 
@@ -278,7 +278,6 @@ public class Bear extends Predator {
         setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(AnimalType.BEAR.ordinal()).getIcon(), getCurrentPosition()); // Создаем bear через AnimalFactory
         StatisticData.predatorBornCount++; // Статистика
-        eat(Objects.requireNonNull(CellPosition.getCellList(getCurrentPosition())));
         System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET);
     }
 

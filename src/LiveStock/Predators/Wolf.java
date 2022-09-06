@@ -98,7 +98,7 @@ public class Wolf extends Predator {
         else if (list.contains(Mouse.mouse.getIcon()) && Main.random.nextInt(101) < 80) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Mouse.mouse.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Mouse.mouse.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            setFoodSaturation(getFoodSaturation() + Mouse.mouse.getWeight()); // Увеличиваем значение насыщения foodSaturation
             if (getFoodSaturation() > -0.01)
                 System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
@@ -205,17 +205,17 @@ public class Wolf extends Predator {
         else { //Если список не содержит animal
 
             setFoodSaturation(getFoodSaturation() - getWeight()/80); // Уменьшаем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
+            if (getFoodSaturation() > -0.001)
                 System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " not eat" + Color.RESET);
-            if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
+            if (getFoodSaturation() < 0.001) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем wolf из списка list
-                if (getFoodSaturation() > -0.01) {
+                if (getFoodSaturation() > -0.001) {
                     StatisticData.predatorDeadCount++; // Статистика
                     System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " dead" + Color.RESET);
                 }
             }
             move(list); // wolf двигается дальше
-            if (getFoodSaturation() > -0.01)
+            if (getFoodSaturation() > -0.001)
                 System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
@@ -260,7 +260,6 @@ public class Wolf extends Predator {
         setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
         CellPosition.changeCell(Main.factory.createAnimal(AnimalType.WOLF.ordinal()).getIcon(), getCurrentPosition()); // Создаем wolf через AnimalFactory
         StatisticData.predatorBornCount++; // Статистика
-        eat(Objects.requireNonNull(CellPosition.getCellList(getCurrentPosition())));
         System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET + getCurrentPosition());
     }
 

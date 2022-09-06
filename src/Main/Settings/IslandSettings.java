@@ -12,10 +12,16 @@ public class IslandSettings {
     public static int islandArraySize; // Размер массива island
     public static int islandDays; // Кол-во дней симуляции
 
-    public IslandSettings() {
+    /**
+     * Алгоритм userChoice():
+     *      метод выводит в консоль пользовательское меню,
+     *          в котором можно выбрать три вида настройки симуляции.
+     */
+
+    public void userChoice() {
 
         System.out.println(Color.YELLOW_UNDERLINED + "\n!ДОБРО ПОЖАЛОВАТЬ В СИМУЛЯЦИЮ!\n" + Color.RESET);
-        System.out.println(Color.BLUE_UNDERLINED + "Выберите размер карты" + Color.RESET + ": " );
+        System.out.println(Color.BLUE_UNDERLINED + "Выберите размер карты" + Color.RESET + ": ");
         System.out.println("1. Маленький 3х3");
         System.out.println("2. Средний 6х6");
         System.out.println("3. Большой 9х9");
@@ -24,25 +30,26 @@ public class IslandSettings {
         int x = scanner.nextInt();
 
         switch (x) {
-            case 1 -> {
+            case 1 -> { // Маленький 3х3
                 islandArraySize = 3;
                 islandDays = 10;
                 Island.scannerResult = 1;
-                Island.cellMaxSize = Cell.values().length-72;
+                Island.cellMaxSize = Cell.values().length - 72;
             }
-            case 2 -> {
+            case 2 -> { // Средний 6х6
                 islandArraySize = 6;
                 islandDays = 15;
                 Island.scannerResult = 2;
-                Island.cellMaxSize = Cell.values().length-45;
+                Island.cellMaxSize = Cell.values().length - 45;
             }
-            case 3 -> {
+            case 3 -> { // Большой 9х9
                 islandArraySize = 9;
                 islandDays = 20;
                 Island.scannerResult = 3;
                 Island.cellMaxSize = Cell.values().length;
             }
-            default -> System.err.println("НЕВЕРНОЕ ЧИСЛО!!! ОШИБКА!!! ПЕРЕЗАПУСТИТЕ ПРОГРАММУ!!!");
+            default -> System.err.println
+                    ("НЕВЕРНОЕ ЧИСЛО!!! ОШИБКА!!! ПЕРЕЗАПУСТИТЕ ПРОГРАММУ!!!");
         }
     }
 }

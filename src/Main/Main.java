@@ -20,8 +20,10 @@ public class Main {
         {System.out.println(Color.GREEN_BRIGHT + "\uD83C\uDF34\uD83C\uDF34\uD83C\uDF34 ISLAND \uD83C\uDF34\uD83C\uDF34\uD83C\uDF34" + Color.RESET);}
 
         IslandSettings islandSettings = new IslandSettings();
+        islandSettings.userChoice();
 
         Initialize init = new Initialize();
         init.start();
+
     }
 }

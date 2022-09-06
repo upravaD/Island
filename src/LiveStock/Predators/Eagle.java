@@ -47,86 +47,86 @@ public class Eagle extends Predator {
         if (list.contains(Fox.fox.getIcon()) && Main.random.nextInt(101) < 10) { // Если list содержит обьект Herbivores то с определленой вероятностью...
 
             list.remove(Fox.fox.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Fox.fox.getWeight()/5); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Fox.fox.getWeight()/5); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект eagle
-                    super.setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //eagle двигается дальше
         }
         else if (list.contains(Rabbit.rabbit.getIcon()) && Main.random.nextInt(101) < 90) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Rabbit.rabbit.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Rabbit.rabbit.getWeight()/5); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Rabbit.rabbit.getWeight()/5); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект eagle
-                    super.setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //eagle двигается дальше
         }
         else if (list.contains(Mouse.mouse.getIcon()) && Main.random.nextInt(101) < 90) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Mouse.mouse.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Mouse.mouse.getWeight()); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Mouse.mouse.getWeight()); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект eagle
-                    super.setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //eagle двигается дальше
         }
         else if (list.contains(Duck.duck.getIcon()) && Main.random.nextInt(101) < 80) { // Если list содержит обьект Herbivores то с определленой вероятностью
 
             list.remove(Duck.duck.getIcon()); // Удаляем animal из списка list
-            super.setFoodSaturation(getFoodSaturation() + Duck.duck.getWeight()/5); // Увеличиваем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            setFoodSaturation(getFoodSaturation() + Duck.duck.getWeight()/5); // Увеличиваем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
             if (getFoodSaturation() > getMaxFoodSaturation()) { // Если значение foodSaturation больше максимального
                 if (Main.random.nextBoolean()) {
                     multiply(); // Создаем еще один обьект eagle
-                    super.setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
+                    setFoodSaturation(getFoodSaturation()/2); // Устанавливаем новое значение foodSaturation
                 }
             }
             StatisticData.herbivoresDeadCount++; // Статистика
             StatisticData.predatorEatingCount++; // Статистика
-            System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
+            System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " eat " + StatisticData.predatorEatingCount + " times" + Color.RESET);
             move(list); //eagle двигается дальше
         }
         else { //Если список не содержит animal
 
-            super.setFoodSaturation(getFoodSaturation() - getWeight()/30); // Уменьшаем значение насыщения foodSaturation
-            if (getFoodSaturation() > -0.01)
-                System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " not eat" + Color.RESET);
-            if (getFoodSaturation() < 0.01) { // Если значение foodSaturation меньше 0.01
+            setFoodSaturation(getFoodSaturation() - getWeight()/30); // Уменьшаем значение насыщения foodSaturation
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " not eat" + Color.RESET);
+            if (getFoodSaturation() < 0.0001) { // Если значение foodSaturation меньше 0.01
                 list.remove(getIcon()); // Удаляем eagle из списка list
-                if (getFoodSaturation() > -0.01) {
+                if (getFoodSaturation() > -0.0001) {
                     StatisticData.predatorDeadCount++; // Статистика
-                    System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " dead" + Color.RESET);
+                    System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " dead" + Color.RESET);
                 }
             }
             move(list); // eagle двигается дальше
-            if (getFoodSaturation() > -0.01)
-                System.out.println(this.getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
+            if (getFoodSaturation() > -0.0001)
+                System.out.println(getClass().getSimpleName() + " Saturation = " + getFoodSaturation());
         }
     }
     /**
@@ -139,7 +139,7 @@ public class Eagle extends Predator {
 
         //System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " = " + this.getCurrentPosition() + Color.RESET);
 
-        int index = this.getCurrentPosition(); // Текущая позиция в массиве island
+        int index = getCurrentPosition(); // Текущая позиция в массиве island
 
         for (int i = 0; i < list.size(); i++) { // Цикл по списку list
 
@@ -148,14 +148,14 @@ public class Eagle extends Predator {
 
                 if (index == Island.cellMaxSize-1) { // Если текущая позиция равна последней ячейке массива island
                     CellPosition.changeCell(getIcon(), 0); // Меняем текущую позицию на первую ячейку массива island
-                    System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " move in the begin" + Color.RESET);
-                    this.setCurrentPosition(0); // Сохраняем значение текущей позиции
+                    System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " move in the begin" + Color.RESET);
+                    setCurrentPosition(0); // Сохраняем значение текущей позиции
 
                 } else { // В любом другом случае
                     index = Main.random.nextInt(Island.cellMaxSize); // Устанавливаем рандомный индекс
                     CellPosition.changeCell(getIcon(), index); // Меняем текущую позицию на рандомную ячейку массива island
-                    System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " random move" + Color.RESET);
-                    this.setCurrentPosition(index); // Сохраняем значение текущей позиции
+                    System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " random move" + Color.RESET);
+                    setCurrentPosition(index); // Сохраняем значение текущей позиции
                 }
             }
         }
@@ -168,11 +168,10 @@ public class Eagle extends Predator {
 
     @Override
     public void multiply() {
-        this.setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
-        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.EAGLE.ordinal()).getIcon(), this.getCurrentPosition()); // Создаем eagle через AnimalFactory
+        setCurrentPosition(Main.random.nextInt(Island.cellMaxSize)); // Сохраняем рандомное значение текущей позиции
+        CellPosition.changeCell(Main.factory.createAnimal(AnimalType.EAGLE.ordinal()).getIcon(), getCurrentPosition()); // Создаем eagle через AnimalFactory
         StatisticData.predatorBornCount++; // Статистика
-        eat(Objects.requireNonNull(CellPosition.getCellList(this.getCurrentPosition())));
-        System.out.println(Color.RED_UNDERLINED + this.getClass().getSimpleName() + " multiply" + Color.RESET);
+        System.out.println(Color.RED_UNDERLINED + getClass().getSimpleName() + " multiply" + Color.RESET);
     }
 
     @Override
